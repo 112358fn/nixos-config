@@ -16,6 +16,9 @@
     networkmanager.enable = true;
   };
  
+  fonts.fonts = with pkgs; [
+  (nerdfonts.override { fonts = ["Hack" "FiraCode" "DroidSansMono" ]; })
+];
   environment.systemPackages = with pkgs; [
     git
     neovim
