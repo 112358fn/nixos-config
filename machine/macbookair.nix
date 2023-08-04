@@ -6,12 +6,9 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
   
-  boot = 
-  {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
   };
 
   networking = {
@@ -19,16 +16,12 @@
     networkmanager.enable = true;
   };
  
-  environment = {
-    systemPackages = with pkgs; [
-      git
-      neovim
-      wget
-      curl
-    ];
-  };
-
-  time.timeZone = "Europe/Stockholm";
+  environment.systemPackages = with pkgs; [
+    git
+    neovim
+    wget
+    curl
+  ];
 
   services = {
     xserver = {
@@ -45,15 +38,9 @@
     ssh.startAgent = true;
   };
 
+  time.timeZone = "Europe/Stockholm";
+  
   sound.enable = true;
   hardware.pulseaudio.enable = true;
-
-  users = { 
-    users.alvaro = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" ];
-    };
-    defaultUserShell = pkgs.zsh;
-  }; 
 }
 

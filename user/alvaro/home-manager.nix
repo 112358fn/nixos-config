@@ -1,17 +1,32 @@
 { config, pkgs, ... }:
 
 {
+  xdg = {
+    enable = true;
+    configFile."i3/config".text = builtins.readFile ./i3;
+    configFile."nvim".source = ./nvim;
+    #configFile."rofi/config.rasi".text = builtins.readFile ./rofi;
+  };
+
   home = {
     stateVersion = "23.05";
-    username = "alvaro";
-    homeDirectory = "/home/alvaro";
+    
     packages = with pkgs; [
      nix-output-monitor
      brave
+     
+     rofi
+     
+     bat
+     fzf
+     ripgrep
     ];
+
     sessionVariables = {
-      TERM = "alacritty"; 
-      TERMINAL = "alacritty"; 
+      LANG = "en_US.UTF-8";
+      LC_CTYPE = "en_US.UTF-8";
+      LC_ALL = "en_US.UTF-8";
+      EDITOR = "nvim";
     };
   };
 
@@ -21,8 +36,10 @@
       enableSshSupport = true;
     };
   };
+
   programs = {
     home-manager.enable = true;
+    password-store.enable = true;
     gpg = {
       enable = true;
       settings = {
@@ -48,11 +65,15 @@
 	throw-keyids = true;
       };
     };
-    password-store.enable = true;
     git = {
       enable = true;
       userName = "Alvaro Alonso";
       userEmail = "112358.fn@gmail.com";
+      extraConfig = {
+	init.defaultBranch = "main";
+	push.default = "current";
+      };
+      #signing = true;
     };  
     alacritty = {
       enable = true;
