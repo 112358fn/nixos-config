@@ -1,5 +1,5 @@
 {
-  description = "Alvaro's NixOS Flake";
+  description = "Alvaro's NixOS systems";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -8,20 +8,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, nixpkgs, home-manager,... }@inputs: {
-    nixosConfigurations = {
-      "macbookair" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-	modules = [
-	  ./configuration.nix
-	  home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.alvaro = import ./home.nix;
-	  }
-	];
-      };
+
+  outputs = { self, nixpkgs, home-manager,... }@inputs: let
+    mknixos = import ./lib/mknixos.nix;
+  in {
+    nixosConfigurations.macbookair = mknixos "macbookair"{
+      inherit nixpkgs home-manager;
+      system = "x86_64-linux";
+      user = "alvaro";
     };
   };
 }
