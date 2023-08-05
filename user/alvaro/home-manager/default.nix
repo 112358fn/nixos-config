@@ -29,4 +29,5 @@
 
   programs.home-manager.enable = true;
   programs.password-store.enable = true;
+  programs.vscode.enable = true;
 }
