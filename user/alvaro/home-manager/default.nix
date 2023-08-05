@@ -18,6 +18,7 @@
      bat
      fzf
      ripgrep
+     texlive.combined.scheme-full
     ];
 
     sessionVariables = {
