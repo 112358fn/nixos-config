@@ -6,7 +6,7 @@ font pango:Hack NFM 10
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/Developer/github.com/112358fn/dotfiles/i3lock/script.sh
+exec --no-startup-id xss-lock --transfer-sleep-lock -- /home/alvaro/.local/share/i3lock/script.sh
 exec --no-startup-id xset s off -dpms
 bindsym $mod+Control+l exec loginctl lock-session
 
