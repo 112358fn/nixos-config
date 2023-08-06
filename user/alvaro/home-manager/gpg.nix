@@ -27,6 +27,7 @@
       no-symkey-cache = true;
       use-agent = true;
       throw-keyids = true;
+      keyserver = "hkps://keys.openpgp.org";
     };
   };
 }
