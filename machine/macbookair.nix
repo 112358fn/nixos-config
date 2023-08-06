@@ -38,7 +38,7 @@
 
   programs = {
     zsh.enable = true; 
-    ssh.startAgent = true;
+    # ssh.startAgent = true;
   };
 
   time.timeZone = "Europe/Stockholm";
