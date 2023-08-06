@@ -16,12 +16,12 @@ general {
 }
 
 #order += "ipv6"
-order += "wireless _first_"
-order += "ethernet _first_"
-order += "battery all"
 order += "disk /"
 order += "cpu_usage"
 order += "memory"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
 order += "tztime local"
 
 wireless _first_ {
@@ -47,9 +47,9 @@ cpu_usage {
   }
 
 memory {
-        format = "%used"
-        threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
+        format = "%available"
+        threshold_degraded = "10%"
+        format_degraded = "%available"
 }
 
 tztime local {
