@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports =  [
+  imports = [
     ./i3
     ./alacritty
     ./nvim
@@ -12,13 +12,14 @@
 
   home = {
     stateVersion = "23.05";
-    
+
     packages = with pkgs; [
-     brave
-     bat
-     fzf
-     ripgrep
-     texlive.combined.scheme-full
+      brave
+      bat
+      fzf
+      ripgrep
+      texlive.combined.scheme-full
+      nixpkgs-fmt
     ];
 
     sessionVariables = {

@@ -7,7 +7,8 @@ nixpkgs.lib.nixosSystem rec {
     ../hardware/${name}.nix
     ../machine/${name}.nix
     ../user/${user}/nixos.nix
-    home-manager.nixosModules.home-manager {
+    home-manager.nixosModules.home-manager
+    {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users.${user} = import ../user/${user}/home-manager;
