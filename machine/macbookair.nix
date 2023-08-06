@@ -18,6 +18,7 @@
  
   fonts.fonts = with pkgs; [
   (nerdfonts.override { fonts = ["Hack" "FiraCode" "DroidSansMono" ]; })
+  lato
 ];
   environment.systemPackages = with pkgs; [
     git
