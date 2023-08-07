@@ -2,7 +2,7 @@
   imports = [
     ./i3
     ./alacritty
-    ./nvim
+    ./nvim.nix
     ./gpg.nix
     ./git.nix
     ./zsh.nix
