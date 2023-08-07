@@ -6,6 +6,7 @@
     ./gpg.nix
     ./git.nix
     ./zsh.nix
+    ./firefox
   ];
 
   xdg.enable = true;
