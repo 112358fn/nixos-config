@@ -32,6 +32,10 @@
     };
     pcscd.enable = true;
     dbus.packages = [ pkgs.gcr ];
+    logind.extraConfig = ''
+      HandlePowerKey=ignore
+      HoldoffTimeoutSec=0s
+    '';
   };
 
   time.timeZone = "Europe/Stockholm";
