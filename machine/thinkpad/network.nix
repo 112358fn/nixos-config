@@ -36,6 +36,11 @@
           IPForward = "ipv4";
           ConfigureWithoutCarrier = true;
         };
+        dhcpServerConfig = {
+          ServerAddress = "192.168.1.1/24";
+          EmitDNS = true;
+          DNS = "_server_address";
+        };
       };
     };
   };
