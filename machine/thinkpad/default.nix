@@ -1,5 +1,8 @@
 { pkgs, ... }: {
-  imports = [ ./network.nix ];
+  imports = [ 
+    ./network.nix
+    ./godns.nix 
+    ];
   system.stateVersion = "23.05";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
