@@ -9,13 +9,22 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager,... }@inputs: let
-    mknixos = import ./lib/mknixos.nix;
-  in {
-    nixosConfigurations.macbookair = mknixos "macbookair"{
-      inherit nixpkgs home-manager;
-      system = "x86_64-linux";
-      user = "alvaro";
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      mknixos = import ./lib/mknixos.nix;
+    in
+    {
+      nixosConfigurations = {
+        macbookair = mknixos "macbookair" {
+          inherit nixpkgs home-manager;
+          system = "x86_64-linux";
+          user = "alvaro";
+        };
+        router = mknixos "thinkpad" {
+          inherit nixpkgs home-manager;
+          system = "x86_64-linux";
+          user = "admin";
+        };
+      };
     };
-  };
 }

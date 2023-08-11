@@ -5,7 +5,7 @@ nixpkgs.lib.nixosSystem rec {
 
   modules = [
     ../hardware/${name}.nix
-    ../machine/${name}.nix
+    ../machine/${name}
     ../user/${user}/nixos.nix
     home-manager.nixosModules.home-manager
     {

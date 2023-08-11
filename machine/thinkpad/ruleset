@@ -1,0 +1,50 @@
+flush ruleset
+
+table ip router {
+	
+	chain input {
+		type filter hook input priority 0; policy drop;
+
+		# Allow traffic from established and related packets, drop invalid
+		ct state vmap { established : accept, related : accept, invalid : drop }
+			
+		# allow loopback traffic, anything else jump to chain for further evaluation
+	    iifname vmap { lo : accept, "wan" : jump input_wan, "lan" : jump input_lan, "tailscale0": jump input_lan }
+
+        # the rest is dropped by the above policy
+	}
+
+	chain input_wan {
+	}
+
+	chain input_lan {
+		# accepting ping (icmp-echo-request) for diagnostic purposes.
+	    icmp type echo-request limit rate 5/second accept
+	
+		# allow DHCP, DNS and SSH from the private network
+	    ip protocol . th dport vmap { tcp . 22 : accept, udp . 53 : accept, tcp . 53 : accept, udp . 67 : accept}
+		tcp dport { http, https } accept comment "Accept HTTP"
+		tcp dport { 1883 } accept comment "Accept MQTT"
+		tcp dport { 8123 } accept comment "Accept HASS"
+	}
+
+	chain forward {
+		type filter hook forward priority 0; policy drop;
+		
+		# Allow traffic from established and related packets, drop invalid
+	    ct state vmap { established : accept, related : accept, invalid : drop }
+
+	    # connections from lan to wan or to other
+		iifname "lan" accept
+
+	    # the rest is dropped by the above policy
+	}
+
+	chain postrouting {
+		type nat hook postrouting priority 100; policy accept;
+		
+		# masquerade private IP addresses
+	    ip saddr 192.168.1.0/24 oifname "wan" masquerade	
+	}	
+}
+
