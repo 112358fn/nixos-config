@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
 
   networking = {
     hostName = "thinkpad";
@@ -39,4 +39,8 @@
       };
     };
   };
+  systemd.services.systemd-networkd-wait-online.serviceConfig.ExecStart = [
+    "" # clear old command
+    "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --interface=wan --timeout=120"
+  ];
 }
