@@ -1,7 +1,8 @@
 { pkgs, ... }: {
   imports = [ 
     ./network.nix
-    ./godns.nix 
+    ./godns.nix
+    ./bind
     ];
   system.stateVersion = "23.05";
 
