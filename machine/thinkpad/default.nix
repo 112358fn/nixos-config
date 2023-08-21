@@ -3,6 +3,7 @@
     ./network.nix
     ./godns.nix
     ./bind
+    ./nginx.nix
     ];
   system.stateVersion = "23.05";
 

@@ -15,6 +15,7 @@ table ip router {
 	}
 
 	chain input_wan {
+		tcp dport { http } accept comment "Accept HTTP"
 	}
 
 	chain input_lan {
