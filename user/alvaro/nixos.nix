@@ -23,6 +23,7 @@
       nixpkgs-fmt
       xss-lock
       i3lock-color
+      zellij
     ];
   };
 
