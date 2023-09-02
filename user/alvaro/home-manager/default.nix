@@ -6,7 +6,6 @@
     ./gpg.nix
     ./git.nix
     ./zsh.nix
-    ./firefox
   ];
 
   xdg.enable = true;
@@ -15,7 +14,7 @@
     stateVersion = "23.05";
 
     packages = with pkgs; [
-      brave
+      firefox
       bat
       fzf
       ripgrep
