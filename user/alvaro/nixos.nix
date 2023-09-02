@@ -10,6 +10,7 @@
       pass
       helix
       alacritty
+      starship
       vscode
       firefox
       bat
@@ -23,9 +24,7 @@
   };
 
   programs = {
-    tmux.enable = true;
     zsh.enable = true;
-    starship.enable = true;
     firefox.enable = true;
   };
 
