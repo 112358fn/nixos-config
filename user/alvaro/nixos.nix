@@ -7,6 +7,8 @@
 
     packages = with pkgs; [
       git
+      ghq
+      zk
       pass
       helix
       alacritty
@@ -14,6 +16,7 @@
       vscode
       firefox
       bat
+      exa
       fzf
       ripgrep
       texlive.combined.scheme-full
