@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   imports = [
-    ./i3
     ./alacritty
     ./nvim.nix
     ./gpg.nix
@@ -20,6 +19,8 @@
       ripgrep
       texlive.combined.scheme-full
       nixpkgs-fmt
+      xss-lock
+      i3lock-color
     ];
 
     sessionVariables = {
