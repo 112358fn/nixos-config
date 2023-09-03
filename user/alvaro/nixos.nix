@@ -24,6 +24,7 @@
       xss-lock
       i3lock-color
       zellij
+      python311Packages.python-lsp-server
     ];
   };
 
