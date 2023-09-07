@@ -1,9 +1,10 @@
 { pkgs, ... }: {
-  imports = [ 
+  imports = [
     ./network.nix
     ./godns.nix
     ./bind
     ./nginx.nix
+    ./tailscale.nix
     ];
   system.stateVersion = "23.05";
 
