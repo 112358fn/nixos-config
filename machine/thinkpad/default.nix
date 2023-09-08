@@ -24,6 +24,9 @@
     openssh = {
       enable = true;
       settings.PermitRootLogin = "yes";
+      extraConfig = ''
+        StreamLocalBindUnlink yes
+      '';
     };
   };
 

@@ -1,8 +1,7 @@
 { pkgs, ... }: {
   imports = [
-    ../../alvaro/home-manager/git.nix
+    ./gpg.nix
   ];
-
   home = {
     stateVersion = "23.05";
 
