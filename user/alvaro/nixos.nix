@@ -3,7 +3,7 @@
     isNormalUser = true;
     home = "/home/alvaro";
     extraGroups = [ "wheel" "networkmanager" ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
 
     packages = with pkgs; [
       git
@@ -25,11 +25,12 @@
       i3lock-color
       zellij
       python311Packages.python-lsp-server
+      yadm
     ];
   };
 
   programs = {
-    zsh.enable = true;
+    fish.enable = true;
     firefox.enable = true;
   };
 

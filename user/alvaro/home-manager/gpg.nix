@@ -5,7 +5,7 @@
     enableExtraSocket = true;
     extraConfig = ''
       extra-socket /run/user/1000/gnupg/S.gpg-agent.extra
-    ''
+    '';
   };
 
   programs.gpg = {
