@@ -36,6 +36,9 @@
       HandlePowerKey=ignore
       HoldoffTimeoutSec=0s
     '';
+    # udev.extraRules = ''
+    #   ACTION=="change", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/run/user/1000/gdm/Xauthority", RUN+="${pkgs.xorg.xrandr}/bin/xrandr --auto"
+    # '';
   };
 
   time.timeZone = "Europe/Stockholm";
