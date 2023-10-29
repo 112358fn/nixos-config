@@ -45,7 +45,7 @@ table ip router {
 		type nat hook postrouting priority 100; policy accept;
 		
 		# masquerade private IP addresses
-	    ip saddr 192.168.1.0/24 oifname "wan" masquerade	
+	    ip saddr 192.168.134.0/24 oifname "wan" masquerade	
 	}	
 }
 

@@ -31,16 +31,24 @@
         matchConfig.Name = "lan";
         linkConfig.RequiredForOnline = "no";
         networkConfig = {
-          Address = "192.168.1.1/24";
+          Address = "192.168.134.1/24";
           DHCPServer = "yes";
           IPForward = "ipv4";
           ConfigureWithoutCarrier = true;
         };
         dhcpServerConfig = {
-          ServerAddress = "192.168.1.1/24";
+          ServerAddress = "192.168.134.1/24";
           EmitDNS = true;
           DNS = "_server_address";
         };
+        dhcpServerStaticLeases = [
+          {
+            dhcpServerStaticLeaseConfig = {
+              Address = "192.168.134.2";
+              MACAddress = "00:c2:c6:f1:8c:c2";
+            };
+          }
+        ];
       };
     };
   };

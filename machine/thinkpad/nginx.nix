@@ -6,7 +6,7 @@
       forceSSL = true; 
       enableACME = true;
       locations."/" = {
-        proxyPass = "http://192.168.1.200:11000$request_uri";
+        proxyPass = "http://192.168.134.214:11000$request_uri";
         recommendedProxySettings = true;
       };
     };

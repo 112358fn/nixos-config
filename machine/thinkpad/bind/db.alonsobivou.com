@@ -11,5 +11,5 @@ $TTL	604800
 ;
 	IN 	NS	ns.alonsobivou.com.
 ;
-ns.alonsobivou.com.	IN	A	192.168.1.1
-cloud.alonsobivou.com.	IN	A	192.168.1.1
+ns.alonsobivou.com.	IN	A	192.168.134.1
+cloud.alonsobivou.com.	IN	A	192.168.134.1
