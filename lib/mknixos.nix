@@ -1,4 +1,4 @@
-name: { nixpkgs, home-manager, system, user, }:
+name: { nixpkgs, system, user, }:
 
 nixpkgs.lib.nixosSystem rec {
   inherit system;
@@ -7,12 +7,6 @@ nixpkgs.lib.nixosSystem rec {
     ../hardware/${name}.nix
     ../machine/${name}
     ../user/${user}/nixos.nix
-    home-manager.nixosModules.home-manager
-    {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.users.${user} = import ../user/${user}/home-manager;
-    }
 
     {
       config._module.args = {

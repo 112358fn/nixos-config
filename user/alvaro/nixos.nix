@@ -26,6 +26,7 @@
       zellij
       python311Packages.python-lsp-server
       yadm
+      gnupg
     ];
   };
 
