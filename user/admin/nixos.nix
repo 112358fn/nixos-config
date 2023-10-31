@@ -7,6 +7,12 @@
     packages = with pkgs; [
       git
       helix
+      yadm
+      bat
+      exa
+      fzf
+      ripgrep
+      gnupg
     ];
   };
 }
