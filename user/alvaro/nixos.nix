@@ -16,7 +16,7 @@
       vscode
       firefox
       bat
-      exa
+      eza
       fzf
       ripgrep
       texlive.combined.scheme-full
