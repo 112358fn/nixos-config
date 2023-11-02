@@ -33,6 +33,7 @@
   programs = {
     fish.enable = true;
     firefox.enable = true;
+    direnv.enable = true;
   };
 
   fonts.fonts = with pkgs; [
