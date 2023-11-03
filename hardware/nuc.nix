@@ -12,6 +12,7 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/75ca3ec4-98e2-41f1-aa8a-854d1a2397ae";
       fsType = "ext4";
+      options = [ "noatime" "nodiratime" "discard" ];
     };
 
   fileSystems."/boot" =
@@ -19,6 +20,12 @@
       fsType = "vfat";
     };
 
+  fileSystems."/mnt/data" =
+    { device = "/dev/disk/by-uuid/bf611155-d2d6-48b8-ade9-785c6baa78ef";
+      fsType = "ext4";
+      options = [ "noatime" "nodiratime" "discard" ];
+    };
+    
   swapDevices =
     [ { device = "/dev/disk/by-uuid/9aba32b0-d3c0-468c-830a-e1851c865034"; }
     ];
@@ -26,6 +33,5 @@
   networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
