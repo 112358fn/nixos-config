@@ -21,6 +21,11 @@
           system = "x86_64-linux";
           user = "admin";
         };
+        server = mknixos "nuc" {
+          inherit nixpkgs;
+          system = "x86_64-linux";
+          user = "alvaro";
+        };
       };
     };
 }
