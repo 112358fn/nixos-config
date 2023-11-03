@@ -13,13 +13,12 @@
       helix
       alacritty
       starship
-      vscode
       firefox
       bat
       eza
       fzf
       ripgrep
-      texlive.combined.scheme-full
+#      texlive.combined.scheme-full
       nixpkgs-fmt
       xss-lock
       i3lock-color
@@ -27,6 +26,7 @@
       python311Packages.python-lsp-server
       yadm
       gnupg
+      pinentry-gtk2
     ];
   };
 

@@ -22,5 +22,12 @@
     curl
   ];
   
+  services = {
+    xserver = {
+      enable = true;
+      windowManager.i3.enable = true;
+      displayManager.gdm.enable = true;
+    };
+  };
   time.timeZone = "Europe/Stockholm";
 }
