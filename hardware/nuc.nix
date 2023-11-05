@@ -6,8 +6,27 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "i915"];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "i915.enable_guc=2"
+  ];
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver 
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-compute-runtime
+    ];
+  };
+  services.thermald.enable = lib.mkDefault true;
+  services.fstrim.enable = lib.mkDefault true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/75ca3ec4-98e2-41f1-aa8a-854d1a2397ae";

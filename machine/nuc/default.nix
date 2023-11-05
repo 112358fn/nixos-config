@@ -13,7 +13,7 @@
   networking = {
     hostName = "nuc";
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 80 443 ];
+    firewall.allowedTCPPorts = [22 80 8096];
   };
 
   environment.systemPackages = with pkgs; [
@@ -28,6 +28,13 @@
       enable = true;
       windowManager.i3.enable = true;
       displayManager.gdm.enable = true;
+    };
+    openssh = {
+      enable = true;
+      settings.PermitRootLogin = "yes";
+      extraConfig = ''
+        StreamLocalBindUnlink yes
+      '';
     };
     nextcloud = {
       enable = true;
@@ -45,6 +52,7 @@
     nginx.virtualHosts.${config.services.nextcloud.hostName} = {
       listenAddresses = ["192.168.134.2"];
     };
+    jellyfin.enable = true;
   };
   time.timeZone = "Europe/Stockholm";
 }
