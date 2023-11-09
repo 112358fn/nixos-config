@@ -1,6 +1,11 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
+  imports = [
+    ./network.nix
+    ./godns.nix
+    ./bind
+    ./nginx.nix
+    ./tailscale.nix
+    ];
   system.stateVersion = "23.05";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -21,6 +26,7 @@
     helix
     wget
     curl
+    jellyfin-ffmpeg
   ];
   
   services = {
@@ -40,12 +46,9 @@
       database.createLocally = true;
       config = {
         adminpassFile = "/etc/nextcloud-admin-pass";
-        trustedProxies = ["192.168.134.1"];    
+        # trustedProxies = ["192.168.134.1"];    
         dbtype = "pgsql";
       };
-    };
-    nginx.virtualHosts.${config.services.nextcloud.hostName} = {
-      listenAddresses = ["192.168.134.2"];
     };
     jellyfin.enable = true;
   };
