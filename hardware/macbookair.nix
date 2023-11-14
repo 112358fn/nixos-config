@@ -6,8 +6,14 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "wl" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+  boot.kernelModules = [ "kvm-intel" "wl" "acpi_call"];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta acpi_call ];
+  boot.kernelParams = [
+    "hid_apple.iso_layout=0"
+    "hid_apple.swap_opt_cmd=1"
+    "i915.enable_rc6=7"
+    "i915"
+  ];
 
   fileSystems."/" =
     {
@@ -44,4 +50,7 @@
   hardware.pulseaudio.enable = true;
   hardware.facetimehd.enable = true;
   sound.enable = true;
+  services.mbpfan.enable = lib.mkDefault true;
+  services.fstrim.enable = lib.mkDefault true;
+  services.tlp.enable = lib.mkDefault true;
 }
