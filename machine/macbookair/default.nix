@@ -22,8 +22,19 @@
     wget
     curl
     pulseaudio
+    alacritty
+    zellij
+    firefox
+#      texlive.combined.scheme-full
+    nixpkgs-fmt
+    xss-lock
+    i3lock-color
+    python311Packages.python-lsp-server
+    pinentry-gtk2
   ];
-
+  
+  programs.firefox.enable = true;
+  
   services = {
     xserver = {
       enable = true;

@@ -10,7 +10,7 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta acpi_call ];
   boot.kernelParams = [
     "hid_apple.iso_layout=0"
-    "hid_apple.swap_opt_cmd=1"
+    "hid_apple.swap_opt_cmd=0"
     "i915.enable_rc6=7"
     "i915"
   ];
