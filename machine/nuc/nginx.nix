@@ -12,6 +12,15 @@
       #   recommendedProxySettings = true;
       # };
     };
+    virtualHosts."media.alonsobivou.com" = {
+      serverName = "media.alonsobivou.com";
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8096$request_uri";
+        recommendedProxySettings = true;
+      };
+    };
   };
   security.acme = {
     acceptTerms = true;
