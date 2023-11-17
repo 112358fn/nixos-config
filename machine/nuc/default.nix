@@ -15,12 +15,6 @@
     efi.canTouchEfiVariables = true;
   };
 
-  networking = {
-    hostName = "nuc";
-    networkmanager.enable = true;
-    firewall.allowedTCPPorts = [22 80 8096];
-  };
-
   environment.systemPackages = with pkgs; [
     git
     helix
@@ -32,7 +26,7 @@
   services = {
     openssh = {
       enable = true;
-      settings.PermitRootLogin = "yes";
+      settings.PermitRootLogin = "no";
       extraConfig = ''
         StreamLocalBindUnlink yes
       '';
