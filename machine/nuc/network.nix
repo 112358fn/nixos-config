@@ -7,6 +7,9 @@
       enable = true;
       rulesetFile = ./ruleset;
     };
+    useDHCP = false;
+    dhcpcd.enable = false;
+    useNetworkd = true;
   };
 
   systemd.network = {
