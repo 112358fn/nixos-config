@@ -34,13 +34,12 @@
     nextcloud = {
       enable = true;
       home = "/mnt/data/nextcloud";
-      package = pkgs.nextcloud27;
+      package = pkgs.nextcloud28;
       hostName = "cloud.alonsobivou.com";
       https = true;
       database.createLocally = true;
       config = {
         adminpassFile = "/etc/nextcloud-admin-pass";
-        # trustedProxies = ["192.168.134.1"];    
         dbtype = "pgsql";
       };
     };
