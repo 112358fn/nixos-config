@@ -7,8 +7,8 @@
       enable = true;
       rulesetFile = ./ruleset;
     };
-    useDHCP = false;
-    dhcpcd.enable = false;
+    # useDHCP = false;
+    # dhcpcd.enable = false;
     useNetworkd = true;
   };
 
@@ -27,7 +27,7 @@
     networks = {
       "10-wan" = {
         matchConfig.Name = "wan";
-        linkConfig.RequiredForOnline = "no";
+        linkConfig.RequiredForOnline = "yes";
         networkConfig.DHCP = "ipv4";
       };
       "10-lan" = {
