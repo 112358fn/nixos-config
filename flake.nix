@@ -16,12 +16,12 @@
           system = "x86_64-linux";
           user = "alvaro";
         };
-        router = mknixos "thinkpad" {
+        thinkpad = mknixos "thinkpad" {
           inherit nixpkgs;
           system = "x86_64-linux";
           user = "admin";
         };
-        server = mknixos "nuc" {
+        nuc = mknixos "nuc" {
           inherit nixpkgs;
           system = "x86_64-linux";
           user = "alvaro";
