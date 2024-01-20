@@ -1,5 +1,5 @@
 HOST=$(shell hostname)
 update:
-	nix flake lock --update-input nixpkgs
+	nix flake update
 install:
 	sudo nixos-rebuild switch --flake .#$(HOST)
