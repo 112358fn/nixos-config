@@ -7,8 +7,6 @@
       enable = true;
       rulesetFile = ./ruleset;
     };
-    # useDHCP = false;
-    # dhcpcd.enable = false;
     useNetworkd = true;
   };
 
@@ -29,6 +27,8 @@
         matchConfig.Name = "wan";
         linkConfig.RequiredForOnline = "yes";
         networkConfig.DHCP = "ipv4";
+        networkConfig.IPv6AcceptRA = false;
+        networkConfig.KeepConfiguration = "dhcp-on-stop";
       };
       "10-lan" = {
         matchConfig.Name = "lan";
@@ -55,6 +55,7 @@
       };
     };
   };
+  systemd.services.systemd-networkd.environment.SYSTEMD_LOG_LEVEL = "debug"; 
   systemd.services.systemd-networkd-wait-online.serviceConfig.ExecStart = [
     "" # clear old command
     "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --interface=wan --timeout=120"
