@@ -19,7 +19,7 @@
         thinkpad = mknixos "thinkpad" {
           inherit nixpkgs;
           system = "x86_64-linux";
-          user = "admin";
+          user = "alvaro";
         };
         nuc = mknixos "nuc" {
           inherit nixpkgs;
