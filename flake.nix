@@ -31,6 +31,11 @@
           system = "x86_64-linux";
           user = "alvaro";
         };
+        macbookpro = mknixos "macbookpro" {
+          inherit nixpkgs;
+          system = "x86_64-linux";
+          user = "alvaro";
+        };
       };
     };
 }
