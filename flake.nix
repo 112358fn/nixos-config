@@ -26,6 +26,11 @@
           system = "x86_64-linux";
           user = "alvaro";
         };
+        hppavilion = mknixos "hppavilion" {
+          inherit nixpkgs;
+          system = "x86_64-linux";
+          user = "alvaro";
+        };
       };
     };
 }
