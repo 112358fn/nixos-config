@@ -10,7 +10,7 @@
   };
 
   networking = {
-    hostName = "macbookair";
+    hostName = "thinkpad";
     networkmanager.enable = true;
   };
 
