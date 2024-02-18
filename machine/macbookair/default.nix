@@ -31,6 +31,7 @@
     i3lock-color
     python311Packages.python-lsp-server
     pinentry-gtk2
+    gnumake
   ];
   
   programs.firefox.enable = true;
