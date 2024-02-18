@@ -37,6 +37,13 @@
       windowManager.i3.enable = true;
       displayManager.gdm.enable = true;
     };
+    openssh = {
+      enable = true;
+      settings.PermitRootLogin = "no";
+      extraConfig = ''
+        StreamLocalBindUnlink yes
+      '';
+    };
     pcscd.enable = true;
     dbus.packages = [ pkgs.gcr ];
     logind.extraConfig = ''
