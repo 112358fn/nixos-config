@@ -21,6 +21,7 @@
     wget
     curl
     jellyfin-ffmpeg
+    gnumake
   ];
   
   services = {
