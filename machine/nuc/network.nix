@@ -46,10 +46,20 @@
         };
         dhcpServerStaticLeases = [
           {
-            dhcpServerStaticLeaseConfig = {
-              Address = "192.168.134.2";
-              MACAddress = "00:c2:c6:f1:8c:c2";
-            };
+            Address = "192.168.134.2";
+            MACAddress = "b8:27:eb:f9:ee:2f";
+          }
+          {
+            Address = "192.168.134.3";
+            MACAddress = "e0:98:06:8d:97:16";
+          }
+          {
+            Address = "192.168.134.4";
+            MACAddress = "f4:cf:a2:d4:67:b6";
+          }
+          {
+            Address = "192.168.134.5";
+            MACAddress = "f4:cf:a2:d4:7a:37";
           }
         ];
       };
