@@ -47,10 +47,9 @@
       };
     };
   };
-  hardware.pulseaudio.enable = true;
   hardware.facetimehd.enable = true;
-  sound.enable = true;
   services.mbpfan.enable = lib.mkDefault true;
   services.fstrim.enable = lib.mkDefault true;
   services.tlp.enable = lib.mkDefault true;
+  services.libinput.touchpad.naturalScrolling = true;
 }
