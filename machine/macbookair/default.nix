@@ -17,26 +17,34 @@
   };
 
   environment.systemPackages = with pkgs; [
-    git
-    helix
-    wget
-    curl
-    pulseaudio
-    alacritty
-    zellij
-    firefox
-#      texlive.combined.scheme-full
-    nixpkgs-fmt
     xss-lock
     i3lock-color
-    python311Packages.python-lsp-server
-    pinentry-gtk2
-    gnumake
+    i3status-rust
   ];
-  
-  programs.firefox.enable = true;
-  
+  # XDG Portal is needed for flatpak
+  xdg.portal = {
+    enable = true;
+    config.common.default = "gtk";
+    extraPortals = [
+     pkgs.xdg-desktop-portal-gtk 
+    ];
+  };
   services = {
+    # Map CapsLock to Esc on single press and Ctrl on when used with multiple keys.
+    interception-tools = {
+      enable = true;
+      plugins = [ pkgs.interception-tools-plugins.caps2esc ];
+      # Work around until the path to the plugin is fixed in upstream
+      udevmonConfig = ''
+        - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
+          DEVICE:
+            EVENTS:
+              EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+      '';
+    };
+    # Flatpak is used to install zen browser
+    # until it is included in nixpkgs
+    flatpak.enable = true;
     xserver = {
       enable = true;
       windowManager.i3.enable = true;
