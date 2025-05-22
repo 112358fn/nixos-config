@@ -1,8 +1,6 @@
 { config, pkgs, ... }: {
   imports = [
     ./network.nix
-    ./godns.nix
-    ./bind
     ./nginx.nix
     ./tailscale.nix
     ];
@@ -35,9 +33,9 @@
     nextcloud = {
       enable = true;
       home = "/mnt/data/nextcloud";
-      package = pkgs.nextcloud28;
+      package = pkgs.nextcloud29;
       hostName = "cloud.alonsobivou.com";
-      https = true;
+      # https = true;
       database.createLocally = true;
       config = {
         adminpassFile = "/etc/nextcloud-admin-pass";
