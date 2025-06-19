@@ -19,11 +19,23 @@
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver 
-      vaapiIntel
-      vaapiVdpau
+      intel-vaapi-driver
+      libva-vdpau-driver
       libvdpau-va-gl
       intel-compute-runtime
     ];
+  };
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        ControllerMode = "dual";
+        FastConnectable = "true";
+      };
+      Policy = {
+        AutoEnable = "true";
+      };
+    };
   };
   services.thermald.enable = lib.mkDefault true;
   services.fstrim.enable = lib.mkDefault true;
