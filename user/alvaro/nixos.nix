@@ -19,6 +19,7 @@
       gnumake
       pass
       helix
+      neovim
       starship
       bat
       eza
@@ -35,7 +36,9 @@
   };
 
   fonts.packages= with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" "FiraCode" "DroidSansMono" ]; })
+    nerd-fonts.hack
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
     lato
   ];
 }
