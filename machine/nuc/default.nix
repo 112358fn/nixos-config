@@ -7,6 +7,7 @@
     ./nginx.nix
     ./cloudflare.nix
     ./ssh.nix
+    ./taskchampion.nix
     ];
   system.stateVersion = "23.05";
 
