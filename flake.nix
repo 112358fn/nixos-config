@@ -8,6 +8,7 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    inputs.flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -15,6 +16,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      flake-utils,
       ...
     }@inputs:
     let
@@ -58,5 +60,12 @@
           modules = [ ./home/macbookair.nix];
         };
       };
+      flake-utils.lib.eachDefaultSystem
+      (system:
+        let pkgs = nixpkgs.legacyPackages.${system}; in
+        {
+          devShells.default = import ./shell.nix { inherit pkgs; };
+        }
+      );
     };
 }
