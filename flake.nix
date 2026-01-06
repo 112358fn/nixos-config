@@ -23,6 +23,7 @@
       mknixos = import ./lib/mknixos.nix;
     in
     {
+      overlays = import ./overlays { inherit inputs; };
       nixosConfigurations = {
         macbookair = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

@@ -15,4 +15,10 @@
     ../packages/gnupg
     ../packages/ssh
   ];
+  nixpkgs = {
+    overlays = [
+      inputs.self.overlays.unstable-packages
+    ];
+    config.allowUnfree = true;
+  };
 }
