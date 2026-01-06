@@ -27,6 +27,8 @@
       ripgrep
       yadm
       gnupg
+      taskwarrior3
+      vlc
     ];
   };
 
