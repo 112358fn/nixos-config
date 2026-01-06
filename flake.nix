@@ -11,10 +11,13 @@
     in
     {
       nixosConfigurations = {
-        macbookair = mknixos "macbookair" {
-          inherit nixpkgs;
+        macbookair = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          user = "alvaro";
+          modules = [
+            ./hardware/macbookair.nix
+            ./machine/macbookair
+            ./user/alvaro/nixos.nix
+            ];
         };
         thinkpad = mknixos "thinkpad" {
           inherit nixpkgs;
