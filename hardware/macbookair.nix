@@ -34,6 +34,14 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
+  hardware.graphics= {
+    extraPackages = with pkgs; [
+      intel-vaapi-driver
+      libva-vdpau-driver
+      libvdpau-va-gl
+      vpl-gpu-rt
+    ];
+  };
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.bluetooth = {
     enable = true;
