@@ -6,8 +6,6 @@
     starship
     zellij
     direnv
-    yadm
-    chezmoi
     bat
     eza
     ripgrep
@@ -18,11 +16,9 @@
     zk
     taskwarrior3
     ghq
-    gh
     git
     fswatch
     rclone
     duckdb
-    unstable.uv
   ];
 }
