@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     neovim-unwrapped
+    tree-sitter
     nixfmt-rfc-style
     pyright
     ruff

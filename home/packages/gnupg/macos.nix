@@ -9,5 +9,6 @@
     enableSshSupport = true;
     grabKeyboardAndMouse = true;
     pinentry.package = pkgs.pinentry_mac;
+    enableBashIntegration = true;
   };
 }

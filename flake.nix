@@ -58,6 +58,11 @@
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./home/macbookair.nix];
         };
+        "AALONSO" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [ ./home/macbookpro.nix];
+        };
       };
     };
 }
