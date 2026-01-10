@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   config,
+  lib,
   ...
 }:
 {
@@ -16,6 +17,11 @@
     config = {
       terminal = "${pkgs.ghostty}/bin/ghostty";
       output."*".bg = "${config.xdg.configHome}/backgrounds/shaded_landscape.png fill";
+      keybindings =
+        let
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in
+        lib.mkOptionDefault { "Mod4+Ctrl+q" = "exec ${pkgs.systemd}/bin/systemctl suspend"; };
     };
   };
   programs.swaylock = {
