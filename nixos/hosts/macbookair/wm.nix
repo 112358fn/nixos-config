@@ -1,5 +1,5 @@
-{pkgs, ... }: {
-  
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
     blueberry
@@ -11,8 +11,7 @@
     gnome-calendar
     gnome-contacts
     gnome-online-accounts-gtk
-    slack
-    ungoogled-chromium
+    firefox
   ];
   environment.sessionVariables = {
     GSK_RENDERER = "ngl";
@@ -22,7 +21,7 @@
     sway = {
       enable = true;
       wrapperFeatures.gtk = true;
-      extraPackages = with pkgs;[
+      extraPackages = with pkgs; [
         waybar
         tofi
         swayidle

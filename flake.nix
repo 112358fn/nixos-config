@@ -26,30 +26,23 @@
         macbookair = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hardware/macbookair.nix
-            ./machine/macbookair
-            ./user/alvaro/nixos.nix
+            ./nixos/hosts/macbookair
+            ./nixos/users/alvaro/nixos.nix
             ];
         };
-        thinkpad = mknixos "thinkpad" {
-          inherit nixpkgs;
+        thinkpad = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          user = "alvaro";
+          modules = [
+            ./nixos/hosts/thinkpad
+            ./nixos/users/alvaro
+            ];
         };
-        nuc = mknixos "nuc" {
-          inherit nixpkgs;
+        nuc = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          user = "alvaro";
-        };
-        hppavilion = mknixos "hppavilion" {
-          inherit nixpkgs;
-          system = "x86_64-linux";
-          user = "alvaro";
-        };
-        macbookpro = mknixos "macbookpro" {
-          inherit nixpkgs;
-          system = "x86_64-linux";
-          user = "alvaro";
+          modules = [
+            ./nixos/hosts/nuc
+            ./nixos/users/alvaro
+            ];
         };
       };
       homeConfigurations = {
