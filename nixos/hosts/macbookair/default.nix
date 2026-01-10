@@ -23,8 +23,6 @@
     hostPlatform = "x86_64-linux";
   };
 
-  security.polkit.enable = true;
-
   networking = {
     hostName = "macbookair";
     networkmanager.enable = true;

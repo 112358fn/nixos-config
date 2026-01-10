@@ -23,6 +23,10 @@
     nerd-fonts.droid-sans-mono
     lato
   ];
+  security = {
+    polkit.enable = true;
+    pam.services.swaylock = { };
+  };
   services = {
     # Map CapsLock to Esc on single press and Ctrl on when used with multiple keys.
     interception-tools = {
