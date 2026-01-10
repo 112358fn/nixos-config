@@ -1,4 +1,7 @@
 { pkgs, ... }:
 {
-  imports = [./wm.nix];
+  imports = [
+    ./wm.nix
+    ./ghostty.nix
+  ];
 }
