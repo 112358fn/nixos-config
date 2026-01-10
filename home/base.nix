@@ -5,7 +5,10 @@
   ...
 }:
 {
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    bash.enable = true;
+  };
   xdg.enable = true;
   nixpkgs = {
     overlays = [
