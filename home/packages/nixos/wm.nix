@@ -27,4 +27,27 @@
       scaling = "fill";
     };
   };
+  services.swayidle = {
+    enable = true;
+    timeouts = [
+      {
+        timeout = 300;
+        command = "${pkgs.swaylock}/bin/swaylock -f";
+      }
+      {
+        timeout = 600;
+        command = "${pkgs.sway}/bin/swaymsg \"output * power off\"";
+      }
+    ];
+    events = [
+      {
+        event = "after-resume";
+        command = "${pkgs.sway}/bin/swaymsg \"output * power on\"";
+      }
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock -f";
+      }
+    ];
+  };
 }
