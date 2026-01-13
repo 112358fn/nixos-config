@@ -21,7 +21,20 @@
         let
           modifier = config.wayland.windowManager.sway.config.modifier;
         in
-        lib.mkOptionDefault { "Mod4+Ctrl+q" = "exec ${pkgs.systemd}/bin/systemctl suspend"; };
+        lib.mkOptionDefault {
+          "Mod4+Ctrl+q" = "exec ${pkgs.systemd}/bin/systemctl suspend";
+          "${modifier}+Left" = null;
+          "${modifier}+Down" = null;
+          "${modifier}+Up" = null;
+          "${modifier}+Right" = null;
+          "XF86AudioRaiseVolume" =
+            "exec --no-startup-id  wpctl set-volume @DEFAULT_AUDIO_SINK@ --limit 1 0.05+";
+          "XF86AudioLowerVolume" =
+            "exec --no-startup-id  wpctl set-volume @DEFAULT_AUDIO_SINK@ --limit 0 0.05-";
+          "XF86AudioMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86MonBrightnessUp" = "exec --no-startup-id brightnessctl s 10%+";
+          "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl s 10%-";
+        };
     };
   };
   programs.swaylock = {
@@ -57,11 +70,13 @@
     ];
   };
   home.packages = with pkgs; [
+    brightnessctl
     wl-clipboard
     nautilus
     geary
     gnome-calendar
     gnome-contacts
     gnome-online-accounts-gtk
+    pavucontrol
   ];
 }

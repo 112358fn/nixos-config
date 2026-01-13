@@ -55,5 +55,9 @@
     fstrim.enable = lib.mkDefault true;
     tlp.enable = lib.mkDefault true;
     libinput.touchpad.naturalScrolling = true;
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
   };
 }
