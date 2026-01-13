@@ -15,6 +15,7 @@
 
   programs = {
     direnv.enable = true;
+    dconf.enable = true;
   };
 
   fonts.packages = with pkgs; [
@@ -46,5 +47,11 @@
     #   HandlePowerKey=ignore
     #   HoldoffTimeoutSec=0s
     # '';
+
+    # Evolution data server is used
+    # by calendar and notes
+    gnome.evolution-data-server.enable = true;
+    gnome.gnome-keyring.enable = true;
+    gnome.gnome-online-accounts.enable = true;
   };
 }

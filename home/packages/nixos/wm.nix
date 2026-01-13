@@ -56,4 +56,12 @@
       }
     ];
   };
+  home.packages = with pkgs; [
+    wl-clipboard
+    nautilus
+    geary
+    gnome-calendar
+    gnome-contacts
+    gnome-online-accounts-gtk
+  ];
 }
