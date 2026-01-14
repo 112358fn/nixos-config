@@ -28,12 +28,16 @@
           "${modifier}+Up" = null;
           "${modifier}+Right" = null;
           "XF86AudioRaiseVolume" =
-            "exec --no-startup-id  wpctl set-volume @DEFAULT_AUDIO_SINK@ --limit 1 0.05+";
+            "exec --no-startup-id ${pkgs.swayosd}/bin/swayosd-client --output-volume raise";
           "XF86AudioLowerVolume" =
-            "exec --no-startup-id  wpctl set-volume @DEFAULT_AUDIO_SINK@ --limit 0 0.05-";
-          "XF86AudioMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          "XF86MonBrightnessUp" = "exec --no-startup-id brightnessctl s 10%+";
-          "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl s 10%-";
+            "exec --no-startup-id ${pkgs.swayosd}/bin/swayosd-client --output-volume lower";
+          "XF86AudioMute" =
+            "exec --no-startup-id ${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle";
+          "XF86MonBrightnessUp" =
+            "exec --no-startup-id ${pkgs.swayosd}/bin/swayosd-client --brightness=raise";
+          "XF86MonBrightnessDown" =
+            "exec --no-startup-id ${pkgs.swayosd}/bin/swayosd-client --brightness=lower";
+          "${modifier}+Shift+n" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
         };
     };
   };
@@ -46,28 +50,32 @@
       scaling = "fill";
     };
   };
-  services.swayidle = {
-    enable = true;
-    timeouts = [
-      {
-        timeout = 300;
-        command = "${pkgs.swaylock}/bin/swaylock -f";
-      }
-      {
-        timeout = 600;
-        command = "${pkgs.sway}/bin/swaymsg \"output * power off\"";
-      }
-    ];
-    events = [
-      {
-        event = "after-resume";
-        command = "${pkgs.sway}/bin/swaymsg \"output * power on\"";
-      }
-      {
-        event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
-      }
-    ];
+  services = {
+    swaync.enable = true;
+    swayosd.enable = true;
+    swayidle = {
+      enable = true;
+      timeouts = [
+        {
+          timeout = 300;
+          command = "${pkgs.swaylock}/bin/swaylock -f";
+        }
+        {
+          timeout = 600;
+          command = "${pkgs.sway}/bin/swaymsg \"output * power off\"";
+        }
+      ];
+      events = [
+        {
+          event = "after-resume";
+          command = "${pkgs.sway}/bin/swaymsg \"output * power on\"";
+        }
+        {
+          event = "before-sleep";
+          command = "${pkgs.swaylock}/bin/swaylock -f";
+        }
+      ];
+    };
   };
   home.packages = with pkgs; [
     brightnessctl
