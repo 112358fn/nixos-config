@@ -10,6 +10,13 @@
     "backgrounds/shaded_landscape.png".source = ./backgrounds/shaded_landscape.png;
     "backgrounds/shaded_landscape_blur.png".source = ./backgrounds/shaded_landscape_blur.png;
   };
+  gtk = {
+    enable = true;
+    iconTheme = {
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+    };
+  };
   wayland.windowManager.sway = {
     enable = true;
     checkConfig = false;
@@ -85,6 +92,7 @@
     gnome-calendar
     gnome-contacts
     gnome-online-accounts-gtk
+    gnome-font-viewer
     pavucontrol
   ];
 }

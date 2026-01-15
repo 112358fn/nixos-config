@@ -22,6 +22,7 @@
     nerd-fonts.hack
     nerd-fonts.fira-code
     nerd-fonts.droid-sans-mono
+    noto-fonts-color-emoji
     lato
   ];
   security = {
