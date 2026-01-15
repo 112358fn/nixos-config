@@ -24,6 +24,18 @@
     config = {
       terminal = "${pkgs.ghostty}/bin/ghostty";
       output."*".bg = "${config.xdg.configHome}/backgrounds/shaded_landscape.png fill";
+      input = {
+        "type:touchpad" = {
+          tap = "enabled";
+          tap_button_map = "lrm";
+          natural_scroll = "enabled";
+          scroll_factor = "0.2";
+          accel_profile = "adaptive";
+          pointer_accel = "-0.2";
+          dwt = "enabled";
+        };
+      };
+      seat."*".xcursor_theme = "Adwaita 20";
       keybindings =
         let
           modifier = config.wayland.windowManager.sway.config.modifier;
