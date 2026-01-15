@@ -27,6 +27,7 @@
     hostName = "macbookair";
     networkmanager.enable = true;
   };
+  systemd.sleep.extraConfig = "SuspendState=freeze";
 
   time.timeZone = "Europe/Stockholm";
 }

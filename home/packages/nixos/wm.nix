@@ -69,14 +69,10 @@
         }
         {
           timeout = 600;
-          command = "${pkgs.sway}/bin/swaymsg \"output * power off\"";
+          command = "${pkgs.systemd}/bin/systemctl suspend";
         }
       ];
       events = [
-        {
-          event = "after-resume";
-          command = "${pkgs.sway}/bin/swaymsg \"output * power on\"";
-        }
         {
           event = "before-sleep";
           command = "${pkgs.swaylock}/bin/swaylock -f";
