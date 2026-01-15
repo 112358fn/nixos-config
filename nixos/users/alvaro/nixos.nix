@@ -13,10 +13,7 @@
     ];
   };
 
-  programs = {
-    direnv.enable = true;
-    dconf.enable = true;
-  };
+  programs.dconf.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.hack

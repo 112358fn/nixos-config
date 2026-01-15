@@ -2,17 +2,14 @@
 {
   home.packages = with pkgs; [
     pass
-    fish
-    starship
     zellij
-    direnv
     bat
     eza
     ripgrep
     fzf
     yazi
+    yadm
     gnused
-    helix
     zk
     taskwarrior3
     ghq
