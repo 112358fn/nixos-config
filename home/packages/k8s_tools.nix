@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     kubernetes-helm
-    yq
+    yq-go
     argocd
     stern
     skopeo
