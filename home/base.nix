@@ -8,8 +8,6 @@
   programs = {
     home-manager.enable = true;
     bash.enable = true;
-    direnv.enable = true;
-    starship.enable = true;
     fish = {
       enable = true;
       interactiveShellInit = ''
@@ -18,10 +16,6 @@
       shellAliases = {
         k = "kubectl";
       };
-    };
-    helix = {
-      enable = true;
-      defaultEditor = true;
     };
   };
   xdg.enable = true;
