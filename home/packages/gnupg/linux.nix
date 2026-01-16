@@ -9,5 +9,7 @@
     enableSshSupport = true;
     grabKeyboardAndMouse = true;
     pinentry.package = pkgs.pinentry-gnome3;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
   };
 }
