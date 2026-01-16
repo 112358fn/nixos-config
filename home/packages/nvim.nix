@@ -12,7 +12,7 @@
     taplo
     typescript-language-server
     tex-fmt
-    marksman
+    # marksman
     markdownlint-cli
     prettierd
   ];
