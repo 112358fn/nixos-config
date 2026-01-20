@@ -55,6 +55,18 @@
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     graphics.enable = true;
     framework.amd-7040.preventWakeOnAC = true;
+    bluetooth = {
+      enable = true;
+      settings = {
+        General = {
+          ControllerMode = "dual";
+          FastConnectable = "true";
+        };
+        Policy = {
+          AutoEnable = "true";
+        };
+      };
+    };
   };
   services = {
     pipewire = {
