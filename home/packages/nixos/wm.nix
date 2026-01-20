@@ -10,12 +10,10 @@
     "backgrounds/shaded_landscape.png".source = ./backgrounds/shaded_landscape.png;
     "backgrounds/shaded_landscape_blur.png".source = ./backgrounds/shaded_landscape_blur.png;
   };
-  gtk = {
+  xdg.portal = {
     enable = true;
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
-    };
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    config.common.default = "*";
   };
   wayland.windowManager.sway = {
     enable = true;
@@ -56,6 +54,9 @@
     };
   };
   home.packages = with pkgs; [
+    nwg-look
+    gnome-themes-extra
+    adwaita-icon-theme
     brightnessctl
     wl-clipboard
     nautilus
