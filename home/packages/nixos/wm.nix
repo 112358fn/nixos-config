@@ -19,46 +19,9 @@
   };
   wayland.windowManager.sway = {
     enable = true;
-    checkConfig = false;
     wrapperFeatures.gtk = true;
-    config = {
-      terminal = "${pkgs.ghostty}/bin/ghostty";
-      output."*".bg = "${config.xdg.configHome}/backgrounds/shaded_landscape.png fill";
-      input = {
-        "type:touchpad" = {
-          tap = "enabled";
-          tap_button_map = "lrm";
-          natural_scroll = "enabled";
-          scroll_factor = "0.2";
-          accel_profile = "adaptive";
-          pointer_accel = "-0.2";
-          dwt = "enabled";
-        };
-      };
-      seat."*".xcursor_theme = "Adwaita 20";
-      keybindings =
-        let
-          modifier = config.wayland.windowManager.sway.config.modifier;
-        in
-        lib.mkOptionDefault {
-          "Mod4+Ctrl+q" = "exec ${pkgs.systemd}/bin/systemctl suspend";
-          "${modifier}+Left" = null;
-          "${modifier}+Down" = null;
-          "${modifier}+Up" = null;
-          "${modifier}+Right" = null;
-          "XF86AudioRaiseVolume" =
-            "exec --no-startup-id ${pkgs.swayosd}/bin/swayosd-client --output-volume raise";
-          "XF86AudioLowerVolume" =
-            "exec --no-startup-id ${pkgs.swayosd}/bin/swayosd-client --output-volume lower";
-          "XF86AudioMute" =
-            "exec --no-startup-id ${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle";
-          "XF86MonBrightnessUp" =
-            "exec --no-startup-id ${pkgs.swayosd}/bin/swayosd-client --brightness=raise";
-          "XF86MonBrightnessDown" =
-            "exec --no-startup-id ${pkgs.swayosd}/bin/swayosd-client --brightness=lower";
-          "${modifier}+Shift+n" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
-        };
-    };
+    extraConfigEarly = "include ~/.config/sway/config.d/*";
+    config = null;
   };
   programs.swaylock = {
     enable = true;
