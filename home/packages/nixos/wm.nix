@@ -21,13 +21,18 @@
     extraConfigEarly = "include ~/.config/sway/config.d/*";
     config = null;
   };
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      indicator-radius = 100;
-      ignore-empty-password = true;
-      image = "${config.xdg.configHome}/backgrounds/shaded_landscape_blur.png";
-      scaling = "fill";
+  programs = {
+    swaylock = {
+      enable = true;
+      settings = { };
+    };
+    swayr = {
+      enable = true;
+      systemd.enable = true;
+    };
+    waybar = {
+      enable = true;
+      systemd.enable = true;
     };
   };
   services = {
@@ -54,6 +59,7 @@
     };
   };
   home.packages = with pkgs; [
+    rofi
     nwg-look
     gnome-themes-extra
     adwaita-icon-theme
