@@ -71,6 +71,7 @@
     gnome-contacts
     gnome-online-accounts-gtk
     gnome-font-viewer
+    papers
     pavucontrol
   ];
 }
