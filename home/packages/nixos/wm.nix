@@ -12,14 +12,24 @@
   };
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    config.common.default = "*";
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "gtk";
+    xdgOpenUsePortal = true;
+  };
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplicationPackages = with pkgs; [
+      firefox
+      papers
+      loupe
+    ];
   };
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     extraConfigEarly = "include ~/.config/sway/config.d/*";
     config = null;
+    systemd.variables = [ "--all" ];
   };
   programs = {
     swaylock = {
@@ -61,6 +71,7 @@
   };
   home.packages = with pkgs; [
     rofi
+    xdg-utils
     wdisplays
     nwg-look
     gnome-themes-extra
@@ -74,6 +85,7 @@
     gnome-online-accounts-gtk
     gnome-font-viewer
     papers
+    loupe
     pavucontrol
   ];
 }
