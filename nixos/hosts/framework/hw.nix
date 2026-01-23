@@ -69,9 +69,16 @@
     };
   };
   services = {
+    fprintd.enable = true;
     pipewire = {
       enable = true;
       pulse.enable = true;
+    };
+    logind.settings.Login = {
+      HandlePowerKey = "ignore";
+      HandleHibernateKey = "ignore";
+      HandleRebootKey = "ignore";
+      HandleSuspendKey = "ignore";
     };
   };
 }

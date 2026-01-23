@@ -71,6 +71,7 @@
   };
   home.packages = with pkgs; [
     rofi
+    wlogout
     xdg-utils
     wdisplays
     nwg-look

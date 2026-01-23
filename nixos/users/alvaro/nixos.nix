@@ -25,6 +25,7 @@
   security = {
     polkit.enable = true;
     pam.services.swaylock = { };
+    pam.services.sudo.fprintAuth = false;
   };
   services = {
     # Map CapsLock to Esc on single press and Ctrl on when used with multiple keys.
@@ -41,10 +42,6 @@
     };
     pcscd.enable = true;
     dbus.packages = [ pkgs.gcr ];
-    # logind.extraConfig = ''
-    #   HandlePowerKey=ignore
-    #   HoldoffTimeoutSec=0s
-    # '';
 
     # Evolution data server is used
     # by calendar and notes
