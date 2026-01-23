@@ -2,9 +2,9 @@
 {
   imports = [
     ./wm.nix
-    ./ghostty.nix
   ];
   home.packages = with pkgs; [
+    ghostty
     firefox
     ungoogled-chromium
   ];
