@@ -86,6 +86,7 @@
     gnome-online-accounts-gtk
     gnome-font-viewer
     papers
+    snapshot
     loupe
     pavucontrol
   ];
