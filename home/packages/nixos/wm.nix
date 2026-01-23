@@ -38,6 +38,7 @@
   services = {
     swaync.enable = true;
     swayosd.enable = true;
+    kanshi.enable = true;
     swayidle = {
       enable = true;
       timeouts = [
@@ -60,6 +61,7 @@
   };
   home.packages = with pkgs; [
     rofi
+    wdisplays
     nwg-look
     gnome-themes-extra
     adwaita-icon-theme
