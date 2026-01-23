@@ -48,5 +48,20 @@
     gnome.evolution-data-server.enable = true;
     gnome.gnome-keyring.enable = true;
     gnome.gnome-online-accounts.enable = true;
+
+    # Autostart sway
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "sway";
+          user = "alvaro";
+        };
+        initial_session = {
+          command = "sway";
+          user = "alvaro";
+        };
+      };
+    };
   };
 }

@@ -17,11 +17,6 @@
     networkmanager.enable = true;
   };
 
-  services.getty = {
-    autologinUser = "alvaro";
-    autologinOnce = true;
-  };
-
   time.timeZone = "Europe/Stockholm";
 
 }
