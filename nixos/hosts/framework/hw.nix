@@ -29,6 +29,18 @@
     initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/nixos";
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
+    # Silent boot
+    loader.timeout = 0;
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "udev.log_level=3"
+      "systemd.show_status=auto"
+    ];
+    # Splash screen with password
+    plymouth.enable = true;
+    initrd.systemd.enable = true;
   };
 
   fileSystems = {
