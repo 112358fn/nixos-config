@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     ghostty
     firefox
-    ungoogled-chromium
+    unstable.ungoogled-chromium
+    unstable.signal-desktop
   ];
 }

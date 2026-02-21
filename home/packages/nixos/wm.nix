@@ -33,6 +33,7 @@
     extraConfigEarly = "include ~/.config/sway/config.d/*";
     config = null;
     systemd.variables = [ "--all" ];
+    xwayland = false;
   };
   programs = {
     swaylock = {

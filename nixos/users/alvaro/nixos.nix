@@ -65,5 +65,10 @@
     };
     # D-BUS service to manipulate storage devs
     udisks2.enable = true;
+    # Tailscale
+    tailscale = {
+      enable = true;
+      useRoutingFeatures = "client";
+    };
   };
 }
