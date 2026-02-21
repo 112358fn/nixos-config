@@ -84,6 +84,7 @@
     brightnessctl
     wl-clipboard
     nautilus
+    file-roller
     geary
     gnome-calendar
     gnome-contacts
@@ -93,6 +94,7 @@
     snapshot
     loupe
     pavucontrol
+    blueberry
     slurp
     grim
   ];
