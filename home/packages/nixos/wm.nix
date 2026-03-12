@@ -94,6 +94,7 @@
     papers
     snapshot
     loupe
+    sushi
     pavucontrol
     blueberry
     slurp
