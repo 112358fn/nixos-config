@@ -16,6 +16,7 @@
     fswatch
     rclone
     duckdb
+    powertop
   ];
   programs = {
     starship.enable = true;

@@ -70,5 +70,8 @@
       enable = true;
       useRoutingFeatures = "client";
     };
+    # Upower
+    upower.enable = true;
   };
+  powerManagement.powertop.enable = true;
 }
