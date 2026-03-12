@@ -15,5 +15,6 @@
     # marksman
     markdownlint-cli
     prettierd
+    js-beautify
   ];
 }
