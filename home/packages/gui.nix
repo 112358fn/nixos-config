@@ -8,5 +8,6 @@
   home.packages = with pkgs; [
     obsidian
     mattermost-desktop
+    unstable.halloy
   ];
 }
