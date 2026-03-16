@@ -91,6 +91,9 @@
       HandleHibernateKey = "ignore";
       HandleRebootKey = "ignore";
       HandleSuspendKey = "ignore";
+      HandleLidSwitch = "ignore";
+      HandleLidSwitchExternalPower = "ignore";
+      HandleLidSwitchDocked = "ignore";
     };
   };
 }
