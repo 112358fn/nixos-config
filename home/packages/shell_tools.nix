@@ -8,6 +8,7 @@
     fzf
     yazi
     yadm
+    chezmoi
     gnused
     zk
     taskwarrior3
