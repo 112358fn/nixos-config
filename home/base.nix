@@ -25,6 +25,7 @@
       ZK_NOTEBOOK_DIR = "$HOME/Notes";
       PYENV_ROOT = "$HOME/.pyenv";
       GOPATH = "$HOME/go";
+      TERMINAL = "ghostty";
     };
     sessionPath = [
       "$HOME/.local/bin"
