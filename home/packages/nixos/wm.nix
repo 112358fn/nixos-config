@@ -53,25 +53,7 @@
     swaync.enable = true;
     swayosd.enable = true;
     kanshi.enable = true;
-    swayidle = {
-      enable = true;
-      timeouts = [
-        {
-          timeout = 300;
-          command = "${pkgs.swaylock}/bin/swaylock -f";
-        }
-        {
-          timeout = 600;
-          command = "${pkgs.systemd}/bin/systemctl suspend";
-        }
-      ];
-      events = [
-        {
-          event = "before-sleep";
-          command = "${pkgs.swaylock}/bin/swaylock -f";
-        }
-      ];
-    };
+    swayidle.enable = true;
     udiskie.enable = true;
   };
   home.packages = with pkgs; [
