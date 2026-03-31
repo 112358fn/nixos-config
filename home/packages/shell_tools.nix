@@ -18,6 +18,9 @@
     rclone
     duckdb
     powertop
+    jq
+    yq
+    uv
   ];
   programs = {
     starship.enable = true;
