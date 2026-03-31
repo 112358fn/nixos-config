@@ -24,6 +24,7 @@
   ];
   programs = {
     starship.enable = true;
+    starship.enableBashIntegration = false;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
