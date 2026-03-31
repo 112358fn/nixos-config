@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   users.users.alvaro = {
     isNormalUser = true;
@@ -77,4 +77,5 @@
     upower.enable = true;
   };
   powerManagement.powertop.enable = true;
+  systemd.services.tailscaled.wantedBy = lib.mkForce [];
 }
