@@ -14,6 +14,9 @@
   };
 
   programs.dconf.enable = true;
+  # Needed to use uv
+  # https://nix.dev/guides/faq#how-to-run-non-nix-executables
+  programs.nix-ld.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.hack
