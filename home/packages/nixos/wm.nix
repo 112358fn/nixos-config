@@ -48,6 +48,10 @@
       enable = true;
       systemd.enable = true;
     };
+    foot = {
+      enable = true;
+      server.enable = true;
+    };
   };
   services = {
     swaync.enable = true;
