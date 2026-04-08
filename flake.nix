@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -17,6 +21,7 @@
       nixpkgs-unstable,
       nixos-hardware,
       home-manager,
+      llm-agents,
       ...
     }@inputs:
     let

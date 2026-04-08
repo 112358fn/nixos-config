@@ -41,6 +41,7 @@
   nixpkgs = {
     overlays = [
       inputs.self.overlays.unstable-packages
+      inputs.llm-agents.overlays.default
     ];
     config.allowUnfree = true;
   };

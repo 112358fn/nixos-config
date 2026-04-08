@@ -21,6 +21,8 @@
     jq
     yq
     uv
+    llm-agents.claude-code
+    llm-agents.claude-code-acp
   ];
   programs = {
     starship.enable = true;
