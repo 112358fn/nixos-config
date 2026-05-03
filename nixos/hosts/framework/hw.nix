@@ -10,6 +10,9 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.18.22") (
+    lib.mkDefault pkgs.linuxPackages_6_18
+  );
   boot = {
     loader = {
       systemd-boot.enable = true;
