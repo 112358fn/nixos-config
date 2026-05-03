@@ -1,0 +1,17 @@
+font pango:monospace 8.000000
+
+seat "*" {
+  xcursor_theme Adwaita 21
+}
+
+
+output "*" {
+  bg /home/alvaro/.config/backgrounds/shaded_landscape.png fill
+}
+
+default_border pixel 3
+smart_gaps on
+for_window [app_id="gcr-prompter"] border none
+for_window [app_id="blueberry.py"] floating enable
+for_window [app_id="org.gnome.NautilusPreviewer"] floating enable
+workspace 1

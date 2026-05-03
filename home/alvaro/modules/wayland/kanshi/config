@@ -1,0 +1,8 @@
+profile {
+	output eDP-1 disable
+	output "ASUSTek COMPUTER INC PA27JCV SBLMSB008701" enable scale 2
+}
+
+profile {
+	output eDP-1 enable scale 2 mode 2880x1920@60.001
+}

@@ -1,0 +1,6 @@
+Host github.com
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_rsa_yubikey.pub
+Host git.internal.skygrid.ai
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_rsa_yubikey.pub

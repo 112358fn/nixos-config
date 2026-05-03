@@ -1,0 +1,5 @@
+timeout 300 '/home/alvaro/.nix-profile/bin/swaylock -f'
+timeout 330 '/run/current-system/sw/bin/systemctl suspend'
+# https://github.com/swaywm/swayidle/issues/198
+before-sleep true
+

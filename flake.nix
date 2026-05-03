@@ -64,17 +64,10 @@
         "alvaro@framework" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs; };
-          modules = [ ./home/framework.nix ];
-        };
-        "alvaro@macbookair" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [ ./home/macbookair.nix ];
-        };
-        "AALONSO" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [ ./home/macbookpro.nix ];
+          modules = [
+            { home.username = "alvaro"; }
+            ./home/alvaro/at_framework.nix
+          ];
         };
       };
     };
