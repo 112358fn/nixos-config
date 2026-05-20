@@ -11,6 +11,7 @@
   ./wlogout
   ./wofi
   ./gtk.nix
+  ./kdeconnect.nix
   ./screenshot.nix
   ./swayosd.nix
   ./terminal.nix

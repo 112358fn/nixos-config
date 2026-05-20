@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./firewall.nix
     ./hw.nix
   ];
   system.stateVersion = "25.11";
