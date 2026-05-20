@@ -12,6 +12,7 @@
   ./wofi
   ./gtk.nix
   ./kdeconnect.nix
+  ./webcam.nix
   ./screenshot.nix
   ./swayosd.nix
   ./terminal.nix
