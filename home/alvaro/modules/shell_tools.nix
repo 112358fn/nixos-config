@@ -12,14 +12,14 @@
     ghq
     git
     fswatch
-    rclone
+    unstable.rclone
     duckdb
     powertop
     jq
     yq-go
     uv
     llm-agents.claude-code
-    llm-agents.claude-code-acp
+    llm-agents.claude-agent-acp
     dig
   ];
   xdg.enable = true;

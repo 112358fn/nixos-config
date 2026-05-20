@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    mattermost-desktop
+    unstable.mattermost-desktop
     unstable.signal-desktop
   ];
 }
