@@ -70,6 +70,7 @@
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     graphics.enable = true;
     framework.amd-7040.preventWakeOnAC = true;
+    framework.laptop13.audioEnhancement.enable = true;
     bluetooth = {
       enable = true;
       settings = {
