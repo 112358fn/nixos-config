@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   home.packages = with pkgs; [
     pass
@@ -22,6 +22,7 @@
     llm-agents.claude-agent-acp
     dig
   ];
+  imports = [ inputs.direnv-instant.homeModules.direnv-instant ];
   xdg.enable = true;
   programs = {
     bash.enable = true;
@@ -35,10 +36,13 @@
       enable = true;
       enableBashIntegration = false;
     };
-    direnv = {
+    direnv-instant = {
       enable = true;
-      nix-direnv.enable = true;
+      enableFishIntegration= true;
+      enableBashIntegration = false;
+      enableZshIntegration = false;
     };
+    direnv.nix-direnv.enable = true;
     bat = {
       enable = true;
       themes = {

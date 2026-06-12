@@ -13,6 +13,7 @@
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    direnv-instant.url = "github:Mic92/direnv-instant";
   };
 
   outputs =
