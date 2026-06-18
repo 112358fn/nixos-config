@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.chromium = {
     enable = true;
@@ -8,5 +8,6 @@
     enable = true;
     package = pkgs.unstable.firefox;
     nativeMessagingHosts = [ pkgs.unstable.passff-host ];
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
   };
 }

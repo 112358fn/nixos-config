@@ -3,7 +3,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-
+    sideloadInitLua = true;
     extraPackages = with pkgs; [
       tree-sitter
       nixfmt-rfc-style
