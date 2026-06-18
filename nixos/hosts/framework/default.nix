@@ -19,5 +19,6 @@
   };
 
   time.timeZone = "Europe/Stockholm";
+  virtualisation.docker.enable = true;
 
 }
