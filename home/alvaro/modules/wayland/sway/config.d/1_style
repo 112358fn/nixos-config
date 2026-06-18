@@ -12,6 +12,6 @@ output "*" {
 default_border pixel 3
 smart_gaps on
 for_window [app_id="gcr-prompter"] border none
-for_window [app_id="blueberry.py"] floating enable
+for_window [app_id=".blueman-manager-wrapped"] floating enable
 for_window [app_id="org.gnome.NautilusPreviewer"] floating enable
 workspace 1

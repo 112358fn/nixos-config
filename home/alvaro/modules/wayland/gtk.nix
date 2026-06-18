@@ -19,7 +19,6 @@
     loupe
     sushi
     pavucontrol
-    blueberry
   ];
   xdg.mimeApps.defaultApplicationPackages = with pkgs; [
     papers

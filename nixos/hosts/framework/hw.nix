@@ -90,6 +90,7 @@
       enable = true;
       pulse.enable = true;
     };
+    blueman.enable = true;
     logind.settings.Login = {
       HandlePowerKey = "ignore";
       HandleHibernateKey = "ignore";
