@@ -26,6 +26,7 @@
     nerd-fonts.droid-sans-mono
     noto-fonts-color-emoji
     lato
+    adwaita-fonts
   ];
   security = {
     polkit.enable = true;
