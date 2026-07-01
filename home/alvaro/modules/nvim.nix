@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -17,6 +17,7 @@
       markdownlint-cli
       prettierd
       js-beautify
+      nixd
     ];
     withNodeJs = true;
     withPython3 = true;
