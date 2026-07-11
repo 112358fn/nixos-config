@@ -38,7 +38,7 @@
     };
     direnv-instant = {
       enable = true;
-      enableFishIntegration= true;
+      enableFishIntegration = true;
       enableBashIntegration = false;
       enableZshIntegration = false;
     };
@@ -56,6 +56,10 @@
           file = "themes/Catppuccin Mocha.tmTheme";
         };
       };
+    };
+    yazi = {
+      enable = true;
+      enableFishIntegration = true;
     };
   };
 }
