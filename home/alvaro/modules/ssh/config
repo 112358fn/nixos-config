@@ -1,6 +1,6 @@
 Host github.com
   IdentitiesOnly yes
   IdentityFile ~/.ssh/id_rsa_yubikey.pub
-Host git.internal.skygrid.ai
+Host forge.skygrid.ai
   IdentitiesOnly yes
-  IdentityFile ~/.ssh/id_rsa_yubikey.pub
+  IdentityFile ~/.ssh/id_ed25519_sk_rk_forge.skygrid.ai

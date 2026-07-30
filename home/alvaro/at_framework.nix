@@ -10,6 +10,7 @@
     ./modules/notes.nix
     ./modules/nvim.nix
     ./modules/shell_tools.nix
+    ./modules/yubikey.nix
   ];
   home.stateVersion = "25.05";
 
