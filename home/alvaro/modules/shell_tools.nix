@@ -21,6 +21,7 @@
     llm-agents.claude-code
     llm-agents.claude-agent-acp
     dig
+    go
   ];
   imports = [ inputs.direnv-instant.homeModules.direnv-instant ];
   xdg.enable = true;
