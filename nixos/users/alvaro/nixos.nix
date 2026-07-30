@@ -33,7 +33,6 @@
   security = {
     polkit.enable = true;
     pam.services.swaylock = { };
-    pam.services.sudo.fprintAuth = false;
   };
   services = {
     # Map CapsLock to Esc on single press and Ctrl on when used with multiple keys.

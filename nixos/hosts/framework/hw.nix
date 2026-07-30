@@ -85,7 +85,8 @@
     };
   };
   services = {
-    fprintd.enable = true;
+    # nixos-hardware enables fprintd by default; we use the YubiKey instead
+    fprintd.enable = false;
     pipewire = {
       enable = true;
       pulse.enable = true;

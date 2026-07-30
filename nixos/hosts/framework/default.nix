@@ -21,4 +21,13 @@
   time.timeZone = "Europe/Stockholm";
   virtualisation.docker.enable = true;
 
+  # YubiKey as an alternative to the password in PAM (sudo, swaylock, ...).
+  # "sufficient" means the password always works as fallback, so a missing
+  # or unenrolled key can never lock us out.
+  security.pam.u2f = {
+    enable = true;
+    control = "sufficient";
+    settings.cue = true;
+  };
+
 }
