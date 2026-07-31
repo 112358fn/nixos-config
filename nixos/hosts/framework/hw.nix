@@ -29,7 +29,17 @@
       "dm-snapshot"
       "cryptd"
     ];
-    initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/nixos";
+    initrd.luks.devices."cryptroot" = {
+      device = "/dev/disk/by-label/nixos";
+      # Try FIDO2 (YubiKey) first; without token-timeout it would wait
+      # forever for the key instead of falling back to the passphrase
+      # prompt. Enrolled via:
+      #   systemd-cryptenroll --fido2-device=auto --fido2-with-client-pin=yes /dev/disk/by-label/nixos
+      crypttabExtraOpts = [
+        "fido2-device=auto"
+        "token-timeout=10"
+      ];
+    };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     # Silent boot
