@@ -11,6 +11,7 @@
     ./modules/nvim.nix
     ./modules/shell_tools.nix
     ./modules/yubikey.nix
+    ./modules/tmux.nix
   ];
   home.stateVersion = "25.05";
 
