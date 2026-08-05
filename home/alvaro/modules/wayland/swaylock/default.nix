@@ -5,11 +5,10 @@
     settings = { };
   };
   xdg.configFile."swaylock/config".source = ./config;
-  # We are not using the logind because of
-  # https://whynothugo.nl/journal/2022/10/26/systemd-locking-and-sleeping/
+  # Lid-close suspend is handled by logind (nixos/hosts/framework/hw.nix)
+  # so the machine also sleeps outside a sway session and re-suspends after
+  # spurious wakes; swayidle's before-sleep locks the screen first.
   xdg.configFile."sway/config.d/3_lock".text = ''
-    set $lock pgrep swaylock || swaylock -f && systemctl suspend
-    bindswitch --locked lid:on exec $lock
-    bindsym --locked Mod1+Ctrl+q exec $lock
+    bindsym --locked Mod1+Ctrl+q exec systemctl suspend
   '';
 }

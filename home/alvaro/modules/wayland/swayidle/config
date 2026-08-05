@@ -1,5 +1,6 @@
 timeout 300 '/home/alvaro/.nix-profile/bin/swaylock -f'
 timeout 330 '/run/current-system/sw/bin/systemctl suspend'
-# https://github.com/swaywm/swayidle/issues/198
-before-sleep true
-
+# Lock before any suspend (lid close is handled by logind since
+# nixos/hosts/framework/hw.nix delegates it there). swayidle holds a
+# logind delay inhibitor while this runs; swaylock -f forks once locked.
+before-sleep '/home/alvaro/.nix-profile/bin/swaylock -f'
