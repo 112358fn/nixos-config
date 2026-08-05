@@ -8,7 +8,6 @@
 
   programs.foot = {
     enable = true;
-    server.enable = true;
   };
   #programs.zellij = {
   #  enable = true;
@@ -17,9 +16,10 @@
   #  exitShellOnExit = true;
   #};
   xdg.configFile."sway/config.d/4_terminal".text = ''
-    assign [app_id="footclient"] workspace $
-    bindsym $mod+grave exec 'swaymsg "[app_id=footclient] nop" || footclient -N && swaymsg "workspace \$"'
-    bindsym $mod+return exec 'footclient -N'
+    assign [app_id="^foot$"] workspace $
+    assign [app_id="^foot-main$"] workspace $
+    bindsym $mod+grave exec 'swaymsg "[app_id=foot-main] nop" || foot --app-id=foot-main -- tmux new-session -A -s main && swaymsg "workspace \$"'
+    bindsym $mod+return exec 'foot'
   '';
-  home.sessionVariables.TERMINAL = "footclient";
+  home.sessionVariables.TERMINAL = "foot";
 }
