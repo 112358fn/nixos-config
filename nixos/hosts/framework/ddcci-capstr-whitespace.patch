@@ -1,0 +1,27 @@
+--- a/ddcci/ddcci.c	2026-08-05 18:59:11.110367272 +0200
++++ b/ddcci/ddcci.c	2026-08-05 18:59:17.314394031 +0200
+@@ -1351,14 +1351,21 @@
+ 	if (unlikely(taglen <= 0 || taglen > 1023))
+ 		return ERR_PTR(-EINVAL);
+ 
+-	/* Find tag */
+-	while (src && (strncmp(src+1, tag, taglen) != 0 || src[1+taglen] != '('))
++	/* Find tag, tolerating whitespace between capability items
++	 * (e.g. ASUS: "(prot(monitor) type(LCD)model(PA27JCV) ... vcp(...") */
++	while (src) {
++		ptr = src+1;
++		while (*ptr == ' ')
++			ptr++;
++		if (strncmp(ptr, tag, taglen) == 0 && ptr[taglen] == '(')
++			break;
+ 		src = ddcci_capstr_tok(src+1, -1);
++	}
+ 	if (!src || src[0] == '\0')
+ 		return ERR_PTR(-ENOENT);
+ 
+ 	/* Locate end of value */
+-	src += taglen+2;
++	src = ptr+taglen+1;
+ 	ptr = ddcci_capstr_tok(src, 0);
+ 	if (unlikely(!ptr))
+ 		return ERR_PTR(-EOVERFLOW);

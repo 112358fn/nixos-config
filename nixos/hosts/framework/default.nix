@@ -3,6 +3,7 @@
   imports = [
     ./firewall.nix
     ./hw.nix
+    ./ddcci.nix
   ];
   system.stateVersion = "25.11";
 
