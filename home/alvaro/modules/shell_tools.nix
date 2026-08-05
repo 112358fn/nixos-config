@@ -22,6 +22,7 @@
     llm-agents.claude-agent-acp
     dig
     go
+    usbutils
   ];
   imports = [ inputs.direnv-instant.homeModules.direnv-instant ];
   xdg.enable = true;
