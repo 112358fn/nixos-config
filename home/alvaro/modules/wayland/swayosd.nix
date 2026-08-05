@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  # Alternative: https://github.com/System64fumo/syshud
   services.swayosd.enable = true;
   home.packages = [
     pkgs.brightnessctl
