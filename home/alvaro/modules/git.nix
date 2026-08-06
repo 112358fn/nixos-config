@@ -33,6 +33,6 @@
       }
     ];
   };
-  home.packages = [ pkgs.ghq ];
+  home.packages = with pkgs;[ ghq forgejo-cli ];
   home.sessionVariables.GHQ_ROOT = "$HOME/Developer";
 }
