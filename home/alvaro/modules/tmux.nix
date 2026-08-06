@@ -16,6 +16,9 @@
 
       bind -n C-t new-window -c "#{pane_current_path}" # prefix-less, like a browser tab
 
+      bind '"' split-window -v -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+
       bind -n M-1 select-window -t 1
       bind -n M-2 select-window -t 2
       bind -n M-3 select-window -t 3
