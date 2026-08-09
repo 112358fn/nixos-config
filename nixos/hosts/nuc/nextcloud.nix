@@ -3,7 +3,7 @@
     nextcloud = {
       enable = true;
       home = "/mnt/data/nextcloud";
-      package = pkgs.nextcloud32;
+      package = pkgs.nextcloud34;
       hostName = "cloud.alonsobivou.com";
       https = true;
       database.createLocally = true;
