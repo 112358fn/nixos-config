@@ -1,8 +1,9 @@
-{...}: {
+{pkgs, ...}: {
   services = {
     # Actual: Finance tool
     actual = {
       enable = true;
+      package = pkgs.unstable.actual-server;
       settings.hostname = "127.0.0.1";
       settings.port = 3000;
     };

@@ -53,6 +53,7 @@
         nuc = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            { nixpkgs.overlays = [ (import ./overlays { inherit inputs; }).unstable-packages ];}
             ./nixos/hosts/nuc
             ./nixos/users/alvaro/base.nix
           ];
