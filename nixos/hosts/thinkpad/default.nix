@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  imports = [ ./hw.nix ];
   system.stateVersion = "23.05";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -46,10 +47,10 @@
     };
     pcscd.enable = true;
     dbus.packages = [ pkgs.gcr ];
-    logind.extraConfig = ''
-      HandlePowerKey=ignore
-      HoldoffTimeoutSec=0s
-    '';
+    logind.settings.Login = {
+      HandlePowerKey = "ignore";
+      HoldoffTimeoutSec = "0s";
+    };
   };
   time.timeZone = "Europe/Stockholm";
 

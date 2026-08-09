@@ -17,7 +17,7 @@
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [
-        "broadcom-sta-6.30.223.271-59-6.12.63"
+        "broadcom-sta-6.30.223.271-59-6.18.42"
       ];
     };
     hostPlatform = "x86_64-linux";
@@ -27,7 +27,7 @@
     hostName = "macbookair";
     networkmanager.enable = true;
   };
-  systemd.sleep.extraConfig = "SuspendState=freeze";
+  systemd.sleep.settings.Sleep.SuspendState = "freeze";
 
   time.timeZone = "Europe/Stockholm";
 }
