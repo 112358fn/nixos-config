@@ -50,6 +50,9 @@
       "quiet"
       "udev.log_level=3"
       "systemd.show_status=auto"
+      # Swapfile's first physical extent, for hibernation resume (see NOTE
+      # at swapDevices).
+      "resume_offset=77336576"
     ];
     # Splash screen with password
     plymouth.enable = true;
@@ -72,15 +75,21 @@
     };
   };
 
+  # NOTE: changing `size` recreates the file, which invalidates the
+  # resume_offset kernel param below — recompute it with
+  # `filefrag -v /swap/swapfile` (first physical_offset) after a resize.
   swapDevices = [
-    { device = "/dev/disk/by-label/swap"; }
+    {
+      device = "/swap/swapfile";
+      size = 32 * 1024;
+    }
   ];
 
   # This board only supports s2idle, which drains battery and can wake
   # spuriously in a bag; after 2h asleep on battery, wake and hibernate to
-  # swap (inside LUKS) instead. If the image doesn't fit in the 8G swap,
-  # systemd falls back to staying suspended.
-  boot.resumeDevice = "/dev/disk/by-label/swap";
+  # the swapfile (inside LUKS) instead. If the image doesn't fit in the
+  # 32G swapfile, systemd falls back to staying suspended.
+  boot.resumeDevice = "/dev/disk/by-label/root";
   systemd.sleep.settings.Sleep.HibernateDelaySec = "2h";
 
   hardware = {
@@ -104,13 +113,6 @@
   services = {
     # nixos-hardware enables fprintd by default; we use the YubiKey instead
     fprintd.enable = false;
-    # Don't let USB (xHCI) or Thunderbolt devices wake the machine from
-    # s2idle — a nudged mouse in a bag would otherwise wake it once per
-    # logind holdoff cycle. Lid and power button are ACPI/EC and still wake.
-    udev.extraRules = ''
-      ACTION=="add|change", SUBSYSTEM=="pci", DRIVER=="xhci_hcd", ATTR{power/wakeup}="disabled"
-      ACTION=="add|change", SUBSYSTEM=="pci", DRIVER=="thunderbolt", ATTR{power/wakeup}="disabled"
-    '';
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -121,10 +123,6 @@
       HandleHibernateKey = "ignore";
       HandleRebootKey = "ignore";
       HandleSuspendKey = "ignore";
-      # Lid must be handled by logind, not a sway binding: logind re-suspends
-      # when the lid is still closed after a spurious s2idle wake (a sway
-      # bindswitch only fires on the close edge, so the laptop stayed awake
-      # in the backpack). Screen locking happens via swayidle's before-sleep.
       HandleLidSwitch = "suspend-then-hibernate";
       HandleLidSwitchExternalPower = "suspend";
       HandleLidSwitchDocked = "ignore";
