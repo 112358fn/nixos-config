@@ -1,5 +1,6 @@
 { config, pkgs, ... }: {
   imports = [
+    ./hw.nix
     ./nextcloud.nix
     ./jellyfin.nix
     ./actual.nix
@@ -8,6 +9,7 @@
     ./cloudflare.nix
     ./ssh.nix
     ./taskchampion.nix
+    ./tailscale.nix
     ];
   system.stateVersion = "23.05";
 
@@ -18,7 +20,59 @@
     efi.canTouchEfiVariables = true;
   };
 
+  programs.fish.enable = true;
+  users.users.alvaro = {
+    shell = pkgs.fish;
+    packages = with pkgs; [
+      git
+      ghq
+      curl
+      zk
+      zellij
+      gnumake
+      pass
+      helix
+      neovim
+      starship
+      bat
+      eza
+      fzf
+      ripgrep
+      yadm
+      gnupg
+    ];
+  };
+
   services = {
+    mattermost = {
+      enable = true;
+      mutableConfig = true;
+      preferNixConfig = false;
+      siteUrl = "https://chat.opstackle.ai";
+      database.peerAuth = true;
+      database.socketPath = "/run/postgresql";
+      database.host = "127.0.0.1";
+    };
+    nginx.virtualHosts."chat.opstackle.ai" = {
+      serverName = "chat.opstackle.ai";
+      serverAliases = ["chat.opstackle.dev" "chat.opstackle.xyz"];
+      forceSSL = false;
+      addSSL = true;
+      enableACME = true;
+      locations."~ /api/v[0-9]+/(users/)?websocket$" = {
+        proxyPass = "http://127.0.0.1:8065$request_uri";
+        proxyWebsockets = true;
+        recommendedProxySettings = true;
+      };
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8065$request_uri";
+        recommendedProxySettings = true;
+        extraConfig = ''
+          client_max_body_size 100M;
+        '';
+      };
+    };
+
     # Map CapsLock to Esc on single press and Ctrl on when used with multiple keys.
     interception-tools = {
       enable = true;
