@@ -25,9 +25,6 @@
       llm-agents,
       ...
     }@inputs:
-    let
-      mknixos = import ./lib/mknixos.nix;
-    in
     {
       overlays = import ./overlays { inherit inputs; };
       nixosConfigurations = {
@@ -50,14 +47,14 @@
           system = "x86_64-linux";
           modules = [
             ./nixos/hosts/thinkpad
-            ./nixos/users/alvaro
+            ./nixos/users/alvaro/nixos.nix
           ];
         };
         nuc = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./nixos/hosts/nuc
-            ./nixos/users/alvaro
+            ./nixos/users/alvaro/base.nix
           ];
         };
       };
