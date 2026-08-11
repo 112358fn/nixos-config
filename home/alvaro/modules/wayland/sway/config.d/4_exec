@@ -1,2 +1,0 @@
-# due to the issue: https://github.com/emersion/kanshi/issues/43
-exec_always "systemctl --user restart kanshi.service"
