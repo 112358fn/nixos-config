@@ -18,6 +18,8 @@
       prettierd
       js-beautify
       nixd
+      delve
+      gotestsum
     ];
     withNodeJs = true;
     withPython3 = true;
