@@ -1,20 +1,8 @@
 { ... }:
 {
-  programs.ghostty = {
-    enable = true;
-    systemd.enable = false;
-    enableBashIntegration = true;
-  };
-
   programs.foot = {
     enable = true;
   };
-  #programs.zellij = {
-  #  enable = true;
-  #  enableFishIntegration = true;
-  #  attachExistingSession = true;
-  #  exitShellOnExit = true;
-  #};
   xdg.configFile."sway/config.d/4_terminal".text = ''
     assign [app_id="^foot$"] workspace $
     assign [app_id="^foot-main$"] workspace $
