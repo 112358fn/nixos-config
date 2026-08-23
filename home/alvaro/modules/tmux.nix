@@ -10,11 +10,17 @@
     baseIndex = 1; # so Alt-1 is the first window, not the second
     plugins = [ pkgs.tmuxPlugins.vim-tmux-navigator ];
     extraConfig = ''
-      set -sa terminal-features ",foot*:RGB"
+      set -sa terminal-features ",foot*:RGB:sixel"
+
+      set -g allow-passthrough on
+      set -g visual-activity off
+      set-option -g focus-events on
+      set -ga update-environment TERM
+      set -ga update-environment TERM_PROGRAM
 
       set -g renumber-windows on # keep indices contiguous so Alt-N stays predictable
 
-      bind -n C-t new-window -c "#{pane_current_path}" # prefix-less, like a browser tab
+      bind -n C-t new-window
 
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
