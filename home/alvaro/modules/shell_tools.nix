@@ -23,6 +23,7 @@
     llm-agents.gemini-cli
     dig
     go
+    clang
     usbutils
   ];
   imports = [ inputs.direnv-instant.homeModules.direnv-instant ];
