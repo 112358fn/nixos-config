@@ -33,6 +33,6 @@
       }
     ];
   };
-  home.packages = with pkgs;[ ghq forgejo-cli ];
+  home.packages = with pkgs;[ ghq forgejo-cli unstable.gitea-mcp-server ];
   home.sessionVariables.GHQ_ROOT = "$HOME/Developer";
 }
