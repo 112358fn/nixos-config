@@ -126,6 +126,7 @@
       HandleLidSwitch = "suspend-then-hibernate";
       HandleLidSwitchExternalPower = "suspend";
       HandleLidSwitchDocked = "ignore";
+      HoldoffTimeoutSec="0s";
     };
   };
 }
