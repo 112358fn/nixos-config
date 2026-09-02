@@ -21,6 +21,7 @@
     llm-agents.claude-code
     llm-agents.claude-agent-acp
     llm-agents.gemini-cli
+    llm-agents.herdr
     dig
     go
     clang
@@ -49,6 +50,9 @@
     direnv.nix-direnv.enable = true;
     bat = {
       enable = true;
+      config = {
+        style = "plain";
+      };
       themes = {
         catppuccin = {
           src = pkgs.fetchFromGitHub {
