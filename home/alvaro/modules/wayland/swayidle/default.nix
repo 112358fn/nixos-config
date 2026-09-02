@@ -1,5 +1,13 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  services.swayidle.enable = true;
-  xdg.configFile."swayidle/config".source = ./config;
+  services.swayidle = {
+    enable = true;
+    timeouts = [
+      {
+        timeout = 330;
+        command = "${pkgs.systemd}/bin/systemctl suspend";
+      }
+    ];
+    events.before-sleep = "${pkgs.swaylock}/bin/swaylock -f";
+  };
 }
