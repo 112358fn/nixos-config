@@ -44,4 +44,13 @@
       bind -n M-9 select-window -t 9
     '';
   };
+
+  home.packages = with pkgs; [
+    llm-agents.workmux
+  ];
+
+  xdg.configFile."workmux/config.yaml".text = ''
+    nerdfont: true
+    mode: session
+  '';
 }
