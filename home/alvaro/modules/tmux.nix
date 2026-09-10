@@ -8,8 +8,16 @@
     focusEvents = true; # nvim autoread/gitsigns react when you switch panes
     mouse = true; # optional, but cheap QoL
     baseIndex = 1; # so Alt-1 is the first window, not the second
-    plugins = [ pkgs.tmuxPlugins.vim-tmux-navigator ];
+    plugins = [ pkgs.tmuxPlugins.vim-tmux-navigator pkgs.tmuxPlugins.catppuccin ];
     extraConfig = ''
+      set -g @catppuccin_flavor 'mocha'
+      set -g @catppuccin_window_status_style "slanted"
+      set -g @catppuccin_window_current_number_color "#{@thm_peach}"
+      set -g @catppuccin_window_number_color "#{@thm_mauve}"
+      set -g status-left ""
+      set -g status-right '#[fg=#{@thm_crust},bg=#{@thm_teal}] session: #S '
+      set -g status-right-length 100
+
       set -sa terminal-features ",foot*:RGB:sixel"
 
       set -g allow-passthrough on
