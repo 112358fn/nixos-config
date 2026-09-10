@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 let
   modifier = "Mod4";
 in
@@ -17,9 +17,14 @@ in
       modifier = modifier;
       workspaceAutoBackAndForth = true;
 
-      # waybar (programs.waybar.systemd.enable) is the actual status bar;
-      # suppress the module's default swaybar+i3status bar.
-      bars = [ ];
+      bars = [
+        {
+          command = "${pkgs.waybar}/bin/waybar";
+          mode = "hide";
+          hiddenState = "hide";
+          extraConfig = "modifier ${modifier}";
+        }
+      ];
 
       focus.wrapping = "yes";
 
@@ -91,11 +96,6 @@ in
         { app_id = ".blueman-manager-wrapped"; }
         { app_id = "org.gnome.NautilusPreviewer"; }
       ];
-
-      gaps = {
-        smartGaps = true;
-        inner = 12;
-      };
 
       input = {
         "type:touchpad" = {

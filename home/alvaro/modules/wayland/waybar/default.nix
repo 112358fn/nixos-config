@@ -1,9 +1,14 @@
 {...}:{
     programs.waybar = {
       enable = true;
-      systemd.enable = true;
+      systemd.enable = false;
       settings.mainBar = {
-        layer = "bottom";
+        ipc = true;
+        mode = "hide";
+        modifier-reset = "release";
+        layer = "top";
+        exclusive = false;
+        start_hidden = true;
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ ];
         modules-right = [ "tray" "network" "battery" "clock" ];
