@@ -95,6 +95,8 @@ in
       floating.criteria = [
         { app_id = ".blueman-manager-wrapped"; }
         { app_id = "org.gnome.NautilusPreviewer"; }
+        { app_id = "org.pulseaudio.pavucontrol"; }
+        { app_id = "wdisplays"; }
       ];
 
       input = {
@@ -113,6 +115,9 @@ in
           natural_scroll = "enabled";
           pointer_accel = "-0.5";
           scroll_factor = "1.0";
+        };
+        "type:keyboard" = {
+          repeat_rate = "0";
         };
       };
 
