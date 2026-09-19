@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
+    ./avahi.nix
     ./firewall.nix
     ./hw.nix
   ];
