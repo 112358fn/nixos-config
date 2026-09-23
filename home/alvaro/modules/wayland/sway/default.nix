@@ -46,8 +46,16 @@ in
         hideEdgeBorders = "smart";
         commands = [
           {
-            command = "border none";
+            command = "border none, focus";
             criteria.app_id = "gcr-prompter";
+          }
+          {
+            command = "focus, move position center";
+            criteria.app_id = "org.pulseaudio.pavucontrol";
+          }
+          {
+            command = "focus, move position center";
+            criteria.app_id = ".blueman-manager-wrapped";
           }
         ];
       };
@@ -124,8 +132,9 @@ in
       # Providing this option at all replaces the sway module's own default
       # keybinding set outright (it isn't merged key-by-key), so this must be
       # the complete list. mod+Return and mod+d are intentionally absent —
-      # terminal.nix and the wofi module bind those themselves via raw
-      # config.d fragments using the $mod variable.
+      # mod+Return, mod+d and mod+1 are intentionally absent — terminal.nix,
+      # the wofi module and browser.nix bind those themselves via raw config.d
+      # fragments using the $mod variable.
       keybindings = {
         "${modifier}+2" = "workspace number 2";
         "${modifier}+3" = "workspace number 3";
