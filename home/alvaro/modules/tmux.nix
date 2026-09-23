@@ -18,6 +18,7 @@
       set -g status-left ""
       set -g status-right '#[fg=#{@thm_crust},bg=#{@thm_teal}] session: #S '
       set -g status-right-length 100
+      set -g status-position top
 
       set -sa terminal-features ",foot*:RGB:sixel"
 
