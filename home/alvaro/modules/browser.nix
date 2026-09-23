@@ -10,6 +10,12 @@
     nativeMessagingHosts = [ pkgs.unstable.passff-host ];
     configPath = "${config.xdg.configHome}/mozilla/firefox";
   };
+  # Same pattern as terminal.nix: mod+1 goes to workspace 1 and starts
+  # firefox there if no firefox window exists yet.
+  xdg.configFile."sway/config.d/4_browser".text = ''
+    assign [app_id="^firefox$"] workspace number 1
+    bindsym $mod+1 exec 'swaymsg "workspace number 1"; swaymsg "[app_id=firefox] nop" || firefox'
+  '';
   home.packages = [
     (pkgs.writeShellScriptBin "browser-dispatch" ''
       case "$1" in
