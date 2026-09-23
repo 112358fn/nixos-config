@@ -1,4 +1,7 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  ...
+}:
 {
   imports = [
     ./avahi.nix
@@ -20,7 +23,14 @@
   };
 
   time.timeZone = "Europe/Stockholm";
-  virtualisation.docker.enable = true;
+
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
+  # To remove docker0 nic
+  # sudo systemctl stop docker && sudo ip link delete docker0
+  systemd.sockets.docker.wantedBy = lib.mkForce [ ];
 
   # YubiKey as an alternative to the password in PAM (sudo, swaylock, ...).
   # "sufficient" means the password always works as fallback, so a missing
