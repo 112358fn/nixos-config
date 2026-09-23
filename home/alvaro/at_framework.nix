@@ -12,6 +12,7 @@
     ./modules/shell_tools.nix
     ./modules/yubikey.nix
     ./modules/tmux.nix
+    ./modules/ebooks.nix
   ];
   home.stateVersion = "25.05";
 
