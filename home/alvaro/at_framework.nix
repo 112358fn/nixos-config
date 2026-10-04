@@ -22,7 +22,7 @@
   nixpkgs = {
     overlays = [
       inputs.self.overlays.unstable-packages
-      inputs.llm-agents.overlays.shared-nixpkgs
+      inputs.self.overlays.llm-agents
     ];
     config.allowUnfree = true;
   };
