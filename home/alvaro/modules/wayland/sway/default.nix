@@ -126,6 +126,9 @@ in
         };
         "type:keyboard" = {
           repeat_rate = "0";
+          # ä/å/ö on AltGr+q/w/p (Shift for the capitals)
+          xkb_layout = "us";
+          xkb_variant = "altgr-intl";
         };
       };
 
