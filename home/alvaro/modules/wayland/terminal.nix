@@ -8,6 +8,10 @@
         shell = "fish";
       };
 
+      # foot sends ^H for Ctrl+Backspace (same as Ctrl+H, which tmux's
+      # vim-tmux-navigator grabs); send an unambiguous CSI-u code instead
+      text-bindings."\\x1b[127;5u" = "Control+BackSpace";
+
       # Catppuccin Mocha
       colors-dark = {
         cursor = "11111b f5e0dc";

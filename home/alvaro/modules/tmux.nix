@@ -20,7 +20,11 @@
       set -g status-right-length 100
       set -g status-position top
 
-      set -sa terminal-features ",foot*:RGB:sixel"
+      set -sa terminal-features ",foot*:RGB:sixel:extkeys"
+
+      # pass modified keys (e.g. Ctrl+Backspace) through instead of collapsing them to ^H
+      set -s extended-keys on
+      set -s extended-keys-format csi-u
 
       set -g allow-passthrough on
       set -g visual-activity off
@@ -30,7 +34,6 @@
 
       set -g renumber-windows on # keep indices contiguous so Alt-N stays predictable
 
-      bind -n C-t new-window
 
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
