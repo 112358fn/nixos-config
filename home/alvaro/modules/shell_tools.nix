@@ -7,7 +7,6 @@
     fzf
     gnused
     gnumake
-    zk
     taskwarrior3
     ghq
     git
