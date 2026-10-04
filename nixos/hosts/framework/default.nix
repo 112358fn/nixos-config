@@ -7,6 +7,7 @@
     ./avahi.nix
     ./firewall.nix
     ./hw.nix
+    ./power-profiles.nix
   ];
   system.stateVersion = "25.11";
 
