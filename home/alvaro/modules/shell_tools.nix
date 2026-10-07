@@ -6,7 +6,6 @@
 }:
 {
   home.packages = with pkgs; [
-    pass
     eza
     ripgrep
     fzf
@@ -23,7 +22,6 @@
     yq-go
     uv
     dig
-    go
     clang
     usbutils
   ];
@@ -33,7 +31,17 @@
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
   };
   programs = {
-    bash.enable = true;
+    password-store = {
+      enable = true;
+      settings.PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
+    };
+    go = {
+      enable = true;
+      env = {
+        GOPATH = "${config.xdg.dataHome}/go";
+        CC = "clang";
+      };
+    };
     fish = {
       enable = true;
       interactiveShellInit = ''
@@ -96,14 +104,11 @@
     };
     starship = {
       enable = true;
-      enableBashIntegration = false;
       settings = fromTOML (builtins.readFile ./starship.toml);
     };
     direnv-instant = {
       enable = true;
       enableFishIntegration = true;
-      enableBashIntegration = false;
-      enableZshIntegration = false;
     };
     direnv = {
       nix-direnv.enable = true;

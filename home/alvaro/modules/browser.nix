@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   programs.chromium = {
     enable = true;
@@ -6,10 +11,13 @@
   };
   programs.firefox = {
     enable = true;
-    package = pkgs.unstable.firefox;
-    nativeMessagingHosts = [ pkgs.unstable.passff-host ];
+    package = pkgs.unstable.firefox.override {
+      nativeMessagingHosts = [ pkgs.unstable.passff-host ];
+    };
     configPath = "${config.xdg.configHome}/mozilla/firefox";
   };
+  # HM always links native messaging hosts into ~/.mozilla; the wrapper handles them instead
+  mozilla.firefoxNativeMessagingHosts = lib.mkForce [ ];
   # Same pattern as terminal.nix: mod+1 goes to workspace 1 and starts
   # firefox there if no firefox window exists yet.
   xdg.configFile."sway/config.d/4_browser".text = ''
