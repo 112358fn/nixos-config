@@ -12,6 +12,7 @@
       "flakes"
     ];
   };
+  nix.channel.enable = false;
 
   nixpkgs = {
     config = {
