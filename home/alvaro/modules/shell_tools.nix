@@ -17,9 +17,6 @@
     jq
     yq-go
     uv
-    llm-agents.claude-code
-    llm-agents.claude-agent-acp
-    llm-agents.gemini-cli
     dig
     go
     clang
