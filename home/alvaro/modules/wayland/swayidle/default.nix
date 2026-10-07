@@ -2,6 +2,7 @@
 let
   swaymsg = "${pkgs.sway}/bin/swaymsg";
   pgrep = "${pkgs.procps}/bin/pgrep";
+  jq = "${pkgs.jq}/bin/jq";
 in
 {
   services.swayidle = {
@@ -17,7 +18,13 @@ in
         # is named ".swaylock-wrapp". Match that as well as plain "swaylock".
         timeout = 15;
         command = "${pgrep} -x '\\.?swaylock.*' && ${swaymsg} 'output * power off'";
-        resumeCommand = "${swaymsg} 'output * power on'";
+        # Only power back on if something is actually off: an unconditional
+        # `output * power on` reconfigures the outputs on every resume, which
+        # breaks active screen shares (portal-wlr dies with "session already
+        # has a frame object", or the share only shows damaged regions).
+        # (`.active` skips outputs kanshi disabled, e.g. eDP-1 when docked,
+        # which also report power == false.)
+        resumeCommand = "${swaymsg} -t get_outputs | ${jq} -e 'any(.[]; .active and .power == false)' >/dev/null && ${swaymsg} 'output * power on'";
       }
     ];
     events.before-sleep = "${pkgs.swaylock}/bin/swaylock -f";

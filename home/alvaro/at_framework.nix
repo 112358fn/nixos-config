@@ -24,6 +24,7 @@
     overlays = [
       inputs.self.overlays.unstable-packages
       inputs.self.overlays.llm-agents
+      inputs.self.overlays.xdg-desktop-portal-wlr
     ];
     config.allowUnfree = true;
   };

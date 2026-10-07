@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 {
   home.packages = with pkgs; [
     pass
@@ -24,6 +29,9 @@
   ];
   imports = [ inputs.direnv-instant.homeModules.direnv-instant ];
   xdg.enable = true;
+  home.sessionVariables = {
+    DOCKER_CONFIG = "${config.xdg.configHome}/docker";
+  };
   programs = {
     bash.enable = true;
     fish = {
