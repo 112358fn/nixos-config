@@ -1,4 +1,4 @@
-{  ... }:
+{ config, ... }:
 {
   home.sessionVariables.ZK_NOTEBOOK_DIR = "$HOME/Documents/notes";
 
@@ -34,13 +34,16 @@
 
       lsp.diagnostics.dead-link = "error";
 
+      # Replaces zk's default fzf flags rather than extending them, so the
+      # defaults are restated here. `--multi` lets Tab mark several notes.
+      tool.fzf-options = "--multi --height 100% --layout reverse --tiebreak begin --exact --no-hscroll --color hl:-1,hl+:-1 --preview-window wrap";
+
       # Aliases are run by zk through $SHELL, which is fish -- so forwarding
       # extra arguments is `$argv`, not the POSIX `$@`. Under sh/bash `$argv`
       # expands to nothing, so these silently drop their arguments if ever run
       # with SHELL=sh. zk prepends `cd "<notebook root>" &&` to every alias.
       alias = {
-        # `type: til` + `til` tag.
-        til-new = "zk new --template til.md $argv";
+        dig = "zk new --print-path --template dig.md --title \"$argv\"";
         recent = "zk edit --sort modified- --interactive $argv";
         proj = "zk edit --interactive --tag projects $argv";
         res = "zk edit --interactive --tag resources $argv";
@@ -48,7 +51,10 @@
         # Triage the capture inbox: notes tagged `inbox`, oldest first.
         inbox = "zk edit --sort created --interactive --tag inbox $argv";
         gotcha = "zk edit --interactive --tag gotcha $argv";
-        conf = "$EDITOR ~/nixos-config/home/alvaro/modules/notes.nix";
+        # Pick notes in fzf and print their absolute paths, NUL-separated, for
+        # piping into `xargs -0`. Quoted so fish leaves the braces alone.
+        pick = "zk list -iqP --format '{{abs-path}}' --delimiter0 $argv";
+        conf = "$EDITOR ${config.xdg.configHome}/home-manager/home/alvaro/modules/notes.nix";
       };
     };
   };
@@ -60,20 +66,15 @@
     tags: []
     ---
 
-    # {{title}}
-
     {{content}}
   '';
 
-  xdg.configFile."zk/templates/til.md".text = ''
+  xdg.configFile."zk/templates/dig.md".text = ''
     ---
     title: {{title}}
     date: {{format-date now "%Y-%m-%d"}}
-    type: til
-    tags: [til]
+    tags: [dig]
     ---
-
-    # {{title}}
 
     {{content}}
   '';
