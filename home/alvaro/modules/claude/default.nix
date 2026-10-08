@@ -11,4 +11,6 @@
   # Out-of-store symlink so CLAUDE.md stays editable without a rebuild.
   home.file."${config.programs.claude-code.configDir}/CLAUDE.md".source =
     config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/home/alvaro/modules/claude/CLAUDE.md";
+  home.file."${config.programs.claude-code.configDir}/commands/dig.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/home-manager/home/alvaro/modules/claude/dig.md";
 }
