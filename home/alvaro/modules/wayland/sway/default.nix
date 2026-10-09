@@ -129,6 +129,8 @@ in
           # ä/å/ö on AltGr+q/w/p (Shift for the capitals)
           xkb_layout = "us";
           xkb_variant = "altgr-intl";
+          # CapsLock acts as Ctrl
+          xkb_options = "ctrl:nocaps";
         };
       };
 
