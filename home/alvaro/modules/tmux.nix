@@ -9,6 +9,7 @@
     mouse = true; # optional, but cheap QoL
     baseIndex = 1; # so Alt-1 is the first window, not the second
     keyMode = "vi";
+    prefix = "C-s";
     plugins = [ pkgs.tmuxPlugins.vim-tmux-navigator pkgs.tmuxPlugins.catppuccin ];
     extraConfig = ''
       set -g @catppuccin_flavor 'mocha'
