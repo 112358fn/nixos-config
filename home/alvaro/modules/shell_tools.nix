@@ -4,6 +4,14 @@
   config,
   ...
 }:
+let
+  catppuccin-fish = pkgs.fetchFromGitHub {
+    owner = "catppuccin";
+    repo = "fish";
+    rev = "5fc5ae9c2ec22eb376cb03ce76f0d262a38960f3";
+    sha256 = "3KNWYXfOMzZovdjwjBpjSH8cVlD4CO2QmQcCyQE4Dac=";
+  };
+in
 {
   home.packages = with pkgs; [
     eza
@@ -27,6 +35,8 @@
   ];
   imports = [ inputs.direnv-instant.homeModules.direnv-instant ];
   xdg.enable = true;
+  xdg.configFile."fish/themes/catppuccin-mocha.theme".source =
+    "${catppuccin-fish}/themes/catppuccin-mocha.theme";
   home.sessionVariables = {
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
   };
@@ -46,6 +56,7 @@
       enable = true;
       interactiveShellInit = ''
         set -g fish_autosuggestion_enabled 0
+        fish_config theme choose catppuccin-mocha
       '';
       functions = {
         c = {
