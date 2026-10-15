@@ -6,7 +6,7 @@
     sideloadInitLua = true;
     extraPackages = with pkgs; [
       tree-sitter
-      nixfmt-rfc-style
+      nixfmt
       pyright
       ruff
       gopls

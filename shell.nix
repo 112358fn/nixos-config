@@ -4,7 +4,7 @@
 
 pkgs.mkShellNoCC {
   packages = with pkgs; [
-    nixfmt-rfc-style
+    nixfmt
     markdownlint-cli
   ];
 }
