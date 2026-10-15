@@ -8,8 +8,8 @@
         shell = "fish";
       };
 
-      # foot sends ^H for Ctrl+Backspace (same as Ctrl+H, which tmux's
-      # vim-tmux-navigator grabs); send an unambiguous CSI-u code instead
+      # foot sends ^H for Ctrl+Backspace (same as Ctrl+H); send an
+      # unambiguous CSI-u code instead so apps can tell them apart
       text-bindings."\\x1b[127;5u" = "Control+BackSpace";
 
       # Catppuccin Mocha

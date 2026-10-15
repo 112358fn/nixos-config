@@ -10,7 +10,7 @@
     baseIndex = 1; # so Alt-1 is the first window, not the second
     keyMode = "vi";
     prefix = "C-s";
-    plugins = [ pkgs.tmuxPlugins.vim-tmux-navigator pkgs.tmuxPlugins.catppuccin ];
+    plugins = [ pkgs.tmuxPlugins.catppuccin ];
     extraConfig = ''
       set -g @catppuccin_flavor 'mocha'
       set -g @catppuccin_window_status_style "slanted"
@@ -34,6 +34,7 @@
       set -ga update-environment TERM_PROGRAM
 
       set -g renumber-windows on # keep indices contiguous so Alt-N stays predictable
+      set -g detach-on-destroy off # switch to another session instead of closing the terminal when the current one is killed
 
 
       bind '"' split-window -v -c "#{pane_current_path}"
