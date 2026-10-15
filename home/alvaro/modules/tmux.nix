@@ -48,6 +48,12 @@
       bind -n M-7 select-window -t 7
       bind -n M-8 select-window -t 8
       bind -n M-9 select-window -t 9
+
+      # workmux
+      bind a run-shell "workmux sidebar"
+      bind A display-popup -h 30 -w 100 -E "workmux dashboard"
+      bind -n M-j run-shell "workmux sidebar next"
+      bind -n M-k run-shell "workmux sidebar prev"
     '';
   };
 
