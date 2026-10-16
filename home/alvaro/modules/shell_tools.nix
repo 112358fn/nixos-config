@@ -93,6 +93,12 @@ in
               | openssl x509 -noout -subject -ext subjectAltName -issuer -dates -serial
           '';
         };
+        q = {
+          description = "Ask claude (haiku) a quick question";
+          body = ''
+            claude -p --model haiku "$argv"
+          '';
+        };
         o.body = ''
           set -l RELOAD 'reload:rg --column --color=always --smart-case {q} || :'
           set -l OPENER 'if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
