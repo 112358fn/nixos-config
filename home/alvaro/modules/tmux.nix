@@ -17,7 +17,7 @@
       set -g @catppuccin_window_current_number_color "#{@thm_peach}"
       set -g @catppuccin_window_number_color "#{@thm_mauve}"
       set -g status-left ""
-      set -g status-right '#[fg=#{@thm_crust},bg=#{@thm_teal}] session: #S '
+      set -g status-right '#{?client_prefix,#[fg=#{@thm_peach}]● ,}#[fg=#{@thm_crust},bg=#{@thm_teal}] session: #S '
       set -g status-right-length 100
       set -g status-position top
 
