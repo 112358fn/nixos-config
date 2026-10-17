@@ -13,7 +13,7 @@
         modules-center = [ ];
         modules-right = [ "tray" "network" "battery" "clock" ];
         network = {
-          format-wifi = "{signalStrength}% ";
+          format-wifi = "{signalStrength}% ";
           format-ethernet = "{ifname}";
           tooltip-format = "{ipaddr}";
           format-linked = "{ifname} (No IP)";

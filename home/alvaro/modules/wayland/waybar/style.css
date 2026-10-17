@@ -1,6 +1,6 @@
 * {
   /* `ttf-font-awesome` is required to be installed for icons */
-  font-family: "Roboto Mono Medium", Helvetica, Arial, sans-serif;
+  font-family: "Hack Nerd Font", Helvetica, Arial, sans-serif;
   font-size: 13px;
   min-height: 0;
   min-width: 0;
@@ -11,6 +11,14 @@
 
   background-color: black;
   color: white;
+}
+
+/* Alpha must live in background-color, not `opacity`: GTK derives the
+   window's opaque region from background-color only. A fully opaque
+   window leaves a black silhouette when sway hides the bar in IPC mode.
+   See https://github.com/Alexays/Waybar/issues/3492 */
+window#waybar {
+  background-color: rgba(0, 0, 0, 0.999);
 }
 
 
