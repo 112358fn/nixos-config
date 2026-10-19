@@ -31,7 +31,7 @@
           exec ${pkgs.unstable.ungoogled-chromium}/bin/chromium --app="$1"
           ;;
         *)
-          exec ${pkgs.firefox}/bin/firefox "$1"
+          exec ${config.programs.firefox.finalPackage}/bin/firefox "$1"
           ;;
       esac
     '')
