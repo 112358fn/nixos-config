@@ -13,6 +13,7 @@
     ./modules/yubikey.nix
     ./modules/tmux.nix
     ./modules/ebooks.nix
+    ./modules/syncthing.nix
     ./modules/easyeffects.nix
     ./modules/claude
   ];
