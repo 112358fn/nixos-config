@@ -52,6 +52,10 @@ in
         CC = "clang";
       };
     };
+    # We need to enable bash in HM so the
+    # envvars are passed to sway and the rest
+    # of graphical apps
+    bash.enable = true;
     fish = {
       enable = true;
       interactiveShellInit = ''
