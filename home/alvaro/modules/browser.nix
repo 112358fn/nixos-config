@@ -12,9 +12,35 @@
   programs.firefox = {
     enable = true;
     package = pkgs.unstable.firefox.override {
-      nativeMessagingHosts = [ pkgs.unstable.passff-host ];
+      nativeMessagingHosts = with pkgs.unstable; [
+        passff-host
+        firefoxpwa
+        tridactyl-native
+      ];
     };
     configPath = "${config.xdg.configHome}/mozilla/firefox";
+    policies.ExtensionSettings = {
+      "passff@invicem.pro" = {
+        installation_mode = "force_installed";
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/passff/latest.xpi";
+      };
+      "firefoxpwa@filips.si" = {
+        installation_mode = "force_installed";
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/pwas-for-firefox/latest.xpi";
+      };
+      "tridactyl.vim@cmcaine.co.uk" = {
+        installation_mode = "force_installed";
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/tridactyl-vim/latest.xpi";
+      };
+      "uBlock0@raymondhill.net" = {
+        installation_mode = "force_installed";
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+      };
+      "@testpilot-containers" = {
+        installation_mode = "force_installed";
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
+      };
+    };
   };
   # HM always links native messaging hosts into ~/.mozilla; the wrapper handles them instead
   mozilla.firefoxNativeMessagingHosts = lib.mkForce [ ];
@@ -25,6 +51,7 @@
     bindsym $mod+1 exec 'swaymsg "workspace number 1"; swaymsg "[app_id=firefox] nop" || firefox'
   '';
   home.packages = [
+    pkgs.unstable.firefoxpwa
     (pkgs.writeShellScriptBin "browser-dispatch" ''
       case "$1" in
         *meet.google.com*)
