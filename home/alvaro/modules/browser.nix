@@ -19,6 +19,47 @@
       ];
     };
     configPath = "${config.xdg.configHome}/mozilla/firefox";
+    profiles.default = {
+      id = 0;
+      path = "0f2k6b72.default";
+      isDefault = true;
+      settings = {
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+      };
+      userChrome = ''
+        /* Remove the top-edge hover target so the toolbars never slide down on
+           mouse-over. The toolbox itself stays off-screen via Firefox's own
+           margin trick, which keeps the URL bar focusable: Ctrl+L still works. */
+        :root[inFullscreen] #fullscr-toggler {
+          display: none !important;
+        }
+      '';
+      search = {
+        force = true;
+        default = "google";
+        order = [
+          "google"
+          "nixos-packages"
+          "home-manager"
+        ];
+        engines = {
+          nixos-packages = {
+            name = "NixOS Packages";
+            urls = [ { template = "https://search.nixos.org/packages?channel=26.05&query={searchTerms}"; } ];
+            definedAliases = [ "@nix" ];
+          };
+          home-manager = {
+            name = "home-manager";
+            urls = [
+              {
+                template = "https://home-manager-options.extranix.com/?release=release-26.05&query={searchTerms}";
+              }
+            ];
+            definedAliases = [ "@hm" ];
+          };
+        };
+      };
+    };
     policies.ExtensionSettings = {
       "passff@invicem.pro" = {
         installation_mode = "force_installed";
