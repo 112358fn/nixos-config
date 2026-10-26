@@ -6,7 +6,6 @@
     ./modules/wayland
     ./modules/browser.nix
     ./modules/git.nix
-    ./modules/messaging.nix
     ./modules/notes.nix
     ./modules/nvim.nix
     ./modules/shell_tools.nix
