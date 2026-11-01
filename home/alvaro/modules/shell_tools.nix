@@ -133,7 +133,10 @@ in
     };
     direnv = {
       nix-direnv.enable = true;
-      config.global.hide_env_diff = true;
+      config = {
+        global.hide_env_diff = true;
+        whitelist.prefix = [ "/home/alvaro/Developer" ];
+      };
     };
     bat = {
       enable = true;
