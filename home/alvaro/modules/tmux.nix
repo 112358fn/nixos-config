@@ -56,8 +56,8 @@
       bind -n M-9 select-window -t 9
 
       # workmux
-      bind a run-shell "workmux sidebar"
-      bind A display-popup -h 30 -w 100 -E "workmux dashboard"
+      bind A run-shell "workmux sidebar"
+      bind a display-popup -h 30 -w 100 -E "workmux dashboard"
       bind -n M-j run-shell "workmux sidebar next"
       bind -n M-k run-shell "workmux sidebar prev"
     '';
@@ -70,5 +70,6 @@
   xdg.configFile."workmux/config.yaml".text = ''
     nerdfont: true
     mode: session
+    default_session: main
   '';
 }
