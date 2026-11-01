@@ -142,6 +142,7 @@ in
       # the wofi module and browser.nix bind those themselves via raw config.d
       # fragments using the $mod variable.
       keybindings = {
+        "${modifier}+1" = "workspace number 1";
         "${modifier}+2" = "workspace number 2";
         "${modifier}+3" = "workspace number 3";
         "${modifier}+4" = "workspace number 4";
