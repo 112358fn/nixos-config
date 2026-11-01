@@ -105,6 +105,7 @@ in
         { app_id = "org.gnome.NautilusPreviewer"; }
         { app_id = "org.pulseaudio.pavucontrol"; }
         { app_id = "wdisplays"; }
+        { app_id = "org.kde.easyeffects";}
       ];
 
       input = {
