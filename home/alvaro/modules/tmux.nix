@@ -10,7 +10,17 @@
     baseIndex = 1; # so Alt-1 is the first window, not the second
     keyMode = "vi";
     prefix = "C-s";
-    plugins = [ pkgs.tmuxPlugins.catppuccin ];
+    plugins = [
+      pkgs.tmuxPlugins.catppuccin
+      {
+        plugin = pkgs.tmuxPlugins.resurrect;
+        # one save dir per server socket (tmux -L work / tmux -L personal),
+        # so the `last` symlinks never overwrite each other
+        extraConfig = ''
+          run-shell 'tmux set -g @resurrect-dir "$HOME/.local/share/tmux/resurrect/$(basename "#{socket_path}")"'
+        '';
+      }
+    ];
     extraConfig = ''
       set -g @catppuccin_flavor 'mocha'
       set -g @catppuccin_window_status_style "slanted"
