@@ -11,7 +11,7 @@ let
     allowedUDPPortRanges = allowedTCPPortRanges;
 
     # Syncthing
-    allowedTCPPorts = [ 22000 ];
+    allowedTCPPorts = [ 22000 9099 ];
     allowedUDPPorts = [
       22000
       21027
