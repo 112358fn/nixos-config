@@ -1,6 +1,8 @@
 { pkgs, lib, ... }:
 {
-  imports = [ ./base.nix ];
+  imports = [
+    ./base.nix
+  ];
 
   users.users.alvaro.extraGroups = [
     "dialout"
@@ -8,7 +10,7 @@
     "hidraw"
     "i2c"
   ];
-  users.groups.hidraw = {};
+  users.groups.hidraw = { };
 
   programs.dconf.enable = true;
   # Needed to use uv
@@ -37,20 +39,6 @@
     gnome.gnome-keyring.enable = true;
     gnome.gnome-online-accounts.enable = true;
 
-    # Autostart sway
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "sway";
-          user = "alvaro";
-        };
-        initial_session = {
-          command = "sway";
-          user = "alvaro";
-        };
-      };
-    };
     # D-BUS service to manipulate storage devs
     udisks2.enable = true;
     # Tailscale

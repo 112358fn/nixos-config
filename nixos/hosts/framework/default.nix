@@ -8,6 +8,7 @@
     ./firewall.nix
     ./hw.nix
     ./power-profiles.nix
+    ./wayland.nix
   ];
   system.stateVersion = "25.11";
 
