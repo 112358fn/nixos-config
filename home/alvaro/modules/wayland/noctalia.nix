@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 let
   modifier = "Mod4";
 in
@@ -8,10 +8,13 @@ in
     ./gtk.nix
     ./kdeconnect.nix
     ./webcam.nix
-    ./screenshot.nix
     ./terminal.nix
     ./xdg.nix
+    ./sway/focus-on-urgent.nix
     inputs.noctalia.homeModules.default
+  ];
+  home.packages = with pkgs; [
+    wl-clipboard
   ];
 
   programs.noctalia = {
@@ -30,7 +33,6 @@ in
     wrapperFeatures.gtk = true;
     extraConfigEarly = ''
       set $mod ${modifier}
-      include ~/.config/sway/config.d/*
     '';
     systemd.variables = [ "--all" ];
     xwayland = false;
@@ -154,6 +156,18 @@ in
         "${modifier}+s" = "exec noctalia msg panel-toggle control-center";
         "${modifier}+comma" = "exec noctalia msg settings-toggle";
         "${modifier}+Tab" = "exec noctalia msg window-switcher hold";
+        "XF86PowerOff" = "exec noctalia msg panel-toggle session";
+        "Mod1+Ctrl+q" = "exec noctalia msg session lock-and-suspend";
+        "XF86AudioRaiseVolume" = "exec noctalia msg volume-up";
+        "XF86AudioLowerVolume" = "exec noctalia msg volume-down";
+        "XF86AudioMute" = "exec noctalia msg volume-mute";
+        "XF86MonBrightnessUp" = "exec noctalia msg brightness-up";
+        "XF86MonBrightnessDown" = "exec noctalia msg brightness-down";
+        "XF86AudioPlay" = "exec noctalia msg media toggle";
+        "XF86AudioNext" = "exec noctalia msg media next";
+        "XF86AudioPrev" = "exec noctalia msg media previous";
+        "Print" = "exec noctalia msg screenshot-region";
+        "$mod+b" = "exec noctalia msg bar-toggle";
 
         "${modifier}+1" = "workspace number 1";
         "${modifier}+2" = "workspace number 2";
@@ -208,6 +222,11 @@ in
       startup = [
         {
           command = "noctalia";
+          always = true;
+        }
+        # https://todo.sr.ht/~emersion/kanshi/35
+        {
+          command = "kanshictl reload";
           always = true;
         }
       ];
