@@ -14,7 +14,6 @@
     package = pkgs.unstable.firefox.override {
       nativeMessagingHosts = with pkgs.unstable; [
         passff-host
-        firefoxpwa
         tridactyl-native
       ];
     };
@@ -61,15 +60,12 @@
       id = 1;
       settings = config.programs.firefox.profiles.personal.settings;
       userChrome = config.programs.firefox.profiles.personal.userChrome;
+      search = { inherit (config.programs.firefox.profiles.personal.search) force default order engines; };
     };
     policies.ExtensionSettings = {
       "passff@invicem.pro" = {
         installation_mode = "force_installed";
         install_url = "https://addons.mozilla.org/firefox/downloads/latest/passff/latest.xpi";
-      };
-      "firefoxpwa@filips.si" = {
-        installation_mode = "force_installed";
-        install_url = "https://addons.mozilla.org/firefox/downloads/latest/pwas-for-firefox/latest.xpi";
       };
       "tridactyl.vim@cmcaine.co.uk" = {
         installation_mode = "force_installed";
@@ -79,15 +75,26 @@
         installation_mode = "force_installed";
         install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
       };
-      "@testpilot-containers" = {
-        installation_mode = "force_installed";
-        install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
-      };
     };
   };
+
+  xdg.desktopEntries.firefox-work = {
+    name = "Firefox (work)";
+    genericName = "Web Browser";
+    exec = "${lib.getExe config.programs.firefox.finalPackage} -P work %U";
+    icon = "firefox";
+    terminal = false;
+    categories = [
+      "Network"
+      "WebBrowser"
+    ];
+    mimeType = [
+      "text/html"
+      "x-scheme-handler/http"
+      "x-scheme-handler/https"
+    ];
+  };
+
   # We are using the pkg override.nativeMessaginHost instead
   mozilla.firefoxNativeMessagingHosts = lib.mkForce [ ];
-  home.packages = [
-    pkgs.unstable.firefoxpwa
-  ];
 }
