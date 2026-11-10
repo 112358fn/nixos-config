@@ -9,6 +9,7 @@
     ./hw.nix
     ./power-profiles.nix
     ./wayland.nix
+    ./interception-tools.nix
   ];
   system.stateVersion = "25.11";
 
