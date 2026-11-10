@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-  xdg.configFile."sway/config.d/3_swayr".text = ''
-    bindsym $mod+space exec pkill wofi || swayr switch-window
-    bindsym $mod+Tab exec swayr switch-to-urgent-or-lru-window
-  '';
+  wayland.windowManager.sway.config.keybindings = {
+    "$mod+space" = "exec pkill wofi || swayr switch-window";
+    "$mod+Tab" = "exec swayr switch-to-urgent-or-lru-window";
+  };
   programs.swayr = {
     enable = true;
     systemd.enable = true;

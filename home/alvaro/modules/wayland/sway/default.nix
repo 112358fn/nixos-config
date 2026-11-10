@@ -3,12 +3,17 @@ let
   modifier = "Mod4";
 in
 {
+  imports = [ ./focus-on-urgent.nix ];
+
+  home.packages = with pkgs; [
+    wl-clipboard
+  ];
+
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     extraConfigEarly = ''
       set $mod ${modifier}
-      include ~/.config/sway/config.d/*
     '';
     systemd.variables = [ "--all" ];
     xwayland = false;
@@ -17,14 +22,7 @@ in
       modifier = modifier;
       workspaceAutoBackAndForth = true;
 
-      bars = [
-        {
-          command = "${pkgs.waybar}/bin/waybar";
-          mode = "hide";
-          hiddenState = "hide";
-          extraConfig = "modifier ${modifier}";
-        }
-      ];
+      bars = [ ];
 
       focus.wrapping = "yes";
 
@@ -37,8 +35,6 @@ in
         xcursor_theme = "Adwaita 21";
         hide_cursor = "when-typing enable";
       };
-
-      output."*".bg = "${./backgrounds/shaded_landscape.png} fill";
 
       window = {
         titlebar = false;
@@ -105,7 +101,7 @@ in
         { app_id = "org.gnome.NautilusPreviewer"; }
         { app_id = "org.pulseaudio.pavucontrol"; }
         { app_id = "wdisplays"; }
-        { app_id = "org.kde.easyeffects";}
+        { app_id = "org.kde.easyeffects"; }
       ];
 
       input = {
@@ -130,17 +126,9 @@ in
           # ä/å/ö on AltGr+q/w/p (Shift for the capitals)
           xkb_layout = "us";
           xkb_variant = "altgr-intl";
-          # CapsLock acts as Ctrl
-          xkb_options = "ctrl:nocaps";
         };
       };
 
-      # Providing this option at all replaces the sway module's own default
-      # keybinding set outright (it isn't merged key-by-key), so this must be
-      # the complete list. mod+Return and mod+d are intentionally absent —
-      # mod+Return, mod+d and mod+1 are intentionally absent — terminal.nix,
-      # the wofi module and browser.nix bind those themselves via raw config.d
-      # fragments using the $mod variable.
       keybindings = {
         "${modifier}+1" = "workspace number 1";
         "${modifier}+2" = "workspace number 2";
@@ -183,7 +171,6 @@ in
           "exec swaynag -t warning -m 'Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'";
 
         "${modifier}+e" = "layout toggle split";
-        "${modifier}+s" = "layout stacking";
         "${modifier}+w" = "layout tabbed";
         "${modifier}+f" = "fullscreen toggle";
 
@@ -194,16 +181,13 @@ in
       };
 
       startup = [
-        # due to the issue: https://github.com/emersion/kanshi/issues/43
+        # https://todo.sr.ht/~emersion/kanshi/35
         {
-          command = ''"systemctl --user restart kanshi.service"'';
+          command = "kanshictl reload";
           always = true;
         }
       ];
     };
   };
 
-  xdg.configFile."backgrounds/shaded_landscape_blur.png".source =
-    ./backgrounds/shaded_landscape_blur.png;
-  imports = [ ./focus-on-urgent.nix ];
 }

@@ -4,8 +4,8 @@
     enable = true;
     settings.layer = "overlay";
   };
-  xdg.configFile."sway/config.d/3_menu".text = ''
-    set $menu pkill wofi || wofi --show=drun
-    bindsym $mod+d exec $menu
-  '';
+
+  wayland.windowManager.sway.config.keybindings = {
+    "$mod+d" = "exec \"pkill wofi || wofi --show=drun\"";
+  };
 }
