@@ -12,10 +12,17 @@
   ];
   system.stateVersion = "25.11";
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    trusted-users = [
+      "root"
+      "alvaro"
+      "@wheel"
+    ];
+  };
   nix.channel.enable = false;
 
   nixpkgs.hostPlatform = "x86_64-linux";

@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, noctalia, ... }:
 {
+  imports = [
+    noctalia.nixosModules.default
+  ];
   programs = {
+    noctalia.enable = true;
     niri.enable = true;
     sway = {
       enable = true;
