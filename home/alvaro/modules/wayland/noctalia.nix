@@ -36,7 +36,7 @@ in
       "${modifier}+comma" = "exec noctalia msg settings-toggle";
       "${modifier}+Tab" = "exec noctalia msg window-switcher hold";
       "XF86PowerOff" = "exec noctalia msg panel-toggle session";
-      "Mod1+Ctrl+q" = "exec noctalia msg session lock-and-suspend";
+      "Mod1+Ctrl+q" = "exec noctalia msg session lock";
       "XF86AudioRaiseVolume" = "exec noctalia msg volume-up";
       "XF86AudioLowerVolume" = "exec noctalia msg volume-down";
       "XF86AudioMute" = "exec noctalia msg volume-mute";
