@@ -11,6 +11,7 @@
     prefix = "C-s";
     plugins = [
       pkgs.tmuxPlugins.catppuccin
+      pkgs.tmuxPlugins.vim-tmux-navigator
       {
         plugin = pkgs.tmuxPlugins.resurrect;
         # one save dir per server socket (tmux -L work / tmux -L personal),
@@ -45,6 +46,9 @@
       bind j select-pane -D
       bind k select-pane -U
       bind l select-pane -R
+
+      # vim-tmux-navigator takes C-l; prefix C-l clears the screen
+      bind C-l send-keys 'C-l'
 
       bind a display-popup -h 30 -w 100 -E "workmux dashboard"
     '';
