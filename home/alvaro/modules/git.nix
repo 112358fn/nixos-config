@@ -43,5 +43,14 @@
     forgejo-cli
     unstable.gitea-mcp-server
   ];
+  # fj prints "Could not find keys file..." to stdout during the build,
+  # which ends up on line 1 of the generated completions. Ship a cleaned
+  # copy in ~/.config/fish/completions (takes precedence over vendor ones)
+  # so forgejo-cli itself stays a binary-cache hit.
+  xdg.configFile."fish/completions/fj.fish".source =
+    pkgs.runCommand "fj.fish" { } ''
+      sed '/^Could not find keys file/d' \
+        ${pkgs.forgejo-cli}/share/fish/vendor_completions.d/fj.fish > $out
+    '';
   home.sessionVariables.GHQ_ROOT = "$HOME/Developer";
 }
