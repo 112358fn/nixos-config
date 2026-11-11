@@ -33,6 +33,15 @@
       }
     ];
   };
-  home.packages = with pkgs;[ ghq forgejo-cli unstable.gitea-mcp-server ];
+  programs.jujutsu = {
+    enable = true;
+    package = pkgs.unstable.jujutsu;
+    settings.user.name = "Alvaro Alonso Bivou";
+  };
+  home.packages = with pkgs; [
+    ghq
+    forgejo-cli
+    unstable.gitea-mcp-server
+  ];
   home.sessionVariables.GHQ_ROOT = "$HOME/Developer";
 }
