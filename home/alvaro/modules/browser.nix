@@ -60,7 +60,14 @@
       id = 1;
       settings = config.programs.firefox.profiles.personal.settings;
       userChrome = config.programs.firefox.profiles.personal.userChrome;
-      search = { inherit (config.programs.firefox.profiles.personal.search) force default order engines; };
+      search = {
+        inherit (config.programs.firefox.profiles.personal.search)
+          force
+          default
+          order
+          engines
+          ;
+      };
     };
     policies.ExtensionSettings = {
       "passff@invicem.pro" = {
@@ -97,4 +104,7 @@
 
   # We are using the pkg override.nativeMessaginHost instead
   mozilla.firefoxNativeMessagingHosts = lib.mkForce [ ];
+  xdg.mimeApps.defaultApplicationPackages = with pkgs; [
+    unstable.firefox
+  ];
 }
