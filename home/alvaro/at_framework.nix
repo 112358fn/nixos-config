@@ -13,7 +13,7 @@
     ./modules/tmux.nix
     ./modules/ebooks.nix
     ./modules/syncthing.nix
-    ./modules/easyeffects.nix
+    ./modules/media.nix
     ./modules/claude
   ];
   home.stateVersion = "25.05";

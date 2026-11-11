@@ -18,7 +18,6 @@
     snapshot
     loupe
     sushi
-    pavucontrol
   ];
   xdg.mimeApps.defaultApplicationPackages = with pkgs; [
     papers

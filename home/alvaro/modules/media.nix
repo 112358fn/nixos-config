@@ -4,6 +4,12 @@ let
   fwDocs = "https://raw.githubusercontent.com/FrameworkComputer/linux-docs/e5289ecc283e0e940536ce48e0ed789adf0280be/easy-effects";
 in
 {
+  home.packages = with pkgs;[
+        pavucontrol
+        ffmpeg
+        mpv
+        vlc
+  ];
   services.easyeffects = {
     enable = true;
     preset = "fw13-easy-effects";
