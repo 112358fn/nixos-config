@@ -10,9 +10,7 @@ format = """
 $username\
 $hostname\
 $directory\
-$git_branch\
-$git_status\
-$python\
+$vcs\
 $nix_shell\
 $cmd_duration\
 $line_break\
@@ -24,6 +22,12 @@ success_symbol = "[(green)❯](peach)"
 error_symbol = "[(red)❯](peach)"
 [directory]
 style = "bold lavender"
+
+[vcs]
+order = [
+"jj",
+"git",
+]
 [git_branch]
 style = "bold mauve"
 
@@ -54,15 +58,6 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
-
-
-[python]
-# Don't trigger for files with the py extension
-detect_extensions = []
-detect_files = []
-detect_folders = []
-python_binary = ['python']
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [nix_shell]
 format = '[nix $symbol]($style)'
