@@ -89,10 +89,10 @@
   };
   wayland.windowManager.sway.config = {
     assigns = {
-      "$" = [ { app_id = "^foot$"; } ];
+      "0" = [ { app_id = "^foot$"; } ];
     };
     keybindings = {
-      "$mod+grave" = "exec 'swaymsg \"[app_id=foot] nop\" || foot && swaymsg \"workspace \$\"'";
+      "$mod+grave" = "exec 'swaymsg \"[app_id=foot] nop\" || foot && swaymsg \"workspace number 0\"'";
       "$mod+return" = "exec foot";
     };
   };
