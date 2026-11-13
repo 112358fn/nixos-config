@@ -42,5 +42,12 @@
       }
     ];
   };
+  # https://todo.sr.ht/~emersion/kanshi/35
+  wayland.windowManager.sway.config.startup = [
+    {
+      command = "kanshictl reload";
+      always = true;
+    }
+  ];
   home.packages = [ pkgs.wdisplays ];
 }

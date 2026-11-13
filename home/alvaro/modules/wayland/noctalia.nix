@@ -54,11 +54,6 @@ in
         command = "noctalia";
         always = true;
       }
-      # https://todo.sr.ht/~emersion/kanshi/35
-      {
-        command = "kanshictl reload";
-        always = true;
-      }
     ];
   };
 }

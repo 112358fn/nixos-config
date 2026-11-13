@@ -11,7 +11,10 @@ in
 
   wayland.windowManager.sway = {
     enable = true;
-    wrapperFeatures.gtk = true;
+    # sway itself comes from the NixOS programs.sway module; validating the
+    # config needs a package, so the build-time check goes with it.
+    package = null;
+    checkConfig = false;
     extraConfigEarly = ''
       set $mod ${modifier}
     '';
@@ -179,14 +182,6 @@ in
 
         "${modifier}+r" = "mode resize";
       };
-
-      startup = [
-        # https://todo.sr.ht/~emersion/kanshi/35
-        {
-          command = "kanshictl reload";
-          always = true;
-        }
-      ];
     };
   };
 

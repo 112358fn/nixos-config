@@ -10,12 +10,13 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.18.22") (
-    lib.mkDefault pkgs.linuxPackages_6_18
-  );
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        # 500M ESP; each generation with a new kernel/initrd adds ~60-100M
+        configurationLimit = 10;
+      };
       efi.canTouchEfiVariables = true;
     };
     initrd.availableKernelModules = [

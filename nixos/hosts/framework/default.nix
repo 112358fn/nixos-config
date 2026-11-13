@@ -18,13 +18,21 @@
       "nix-command"
       "flakes"
     ];
-    trusted-users = [
-      "root"
-      "alvaro"
-      "@wheel"
+    # Only root is trusted (the default). Substituters are declared here so
+    # untrusted users (home-manager switch, nix develop) still use them; the
+    # flake's nixConfig is ignored for untrusted users.
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
     ];
   };
   nix.channel.enable = false;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  nix.optimise.automatic = true;
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
@@ -35,13 +43,13 @@
 
   time.timeZone = "Europe/Stockholm";
 
-  virtualisation.docker = {
+  # Rootless: the daemon runs as the user, so no root-equivalent docker group.
+  # Kept on demand like before: `systemctl --user start docker`.
+  virtualisation.docker.rootless = {
     enable = true;
-    enableOnBoot = false;
+    setSocketVariable = true;
   };
-  # To remove docker0 nic
-  # sudo systemctl stop docker && sudo ip link delete docker0
-  systemd.sockets.docker.wantedBy = lib.mkForce [ ];
+  systemd.user.services.docker.wantedBy = lib.mkForce [ ];
 
   # YubiKey as an alternative to the password in PAM (sudo, swaylock, ...).
   # "sufficient" means the password always works as fallback, so a missing

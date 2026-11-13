@@ -6,11 +6,8 @@
 
   users.users.alvaro.extraGroups = [
     "dialout"
-    "docker"
-    "hidraw"
     "i2c"
   ];
-  users.groups.hidraw = { };
 
   programs.dconf.enable = true;
   # Needed to use uv
@@ -48,10 +45,9 @@
     };
     # Upower
     upower.enable = true;
-    udev.extraRules = ''
-      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", GROUP="hidraw", MODE="0660"
-    '';
+    # uaccess for YubiKey hidraw (OTP/management via ykman) only, instead of
+    # every HID device; FIDO tokens are already tagged by systemd's fido_id.
+    udev.packages = [ pkgs.yubikey-personalization ];
   };
-  powerManagement.powertop.enable = true;
   systemd.services.tailscaled.wantedBy = lib.mkForce [ ];
 }

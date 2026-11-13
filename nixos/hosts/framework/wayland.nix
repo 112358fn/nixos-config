@@ -11,14 +11,15 @@
   xdg.portal.xdgOpenUsePortal = true;
   programs = {
     noctalia.enable = true;
-    niri.enable = true;
+    # The only sway binary; home-manager just writes the config
+    # (wayland.windowManager.sway.package = null).
     sway = {
       enable = true;
       xwayland.enable = false;
       extraPackages = [ ];
       wrapperFeatures = {
         base = false;
-        gtk = false;
+        gtk = true;
       };
     };
     regreet = {
