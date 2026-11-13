@@ -22,7 +22,7 @@ in
     description = "Set power profile from AC adapter state";
     after = [ "power-profiles-daemon.service" ];
     wants = [ "power-profiles-daemon.service" ];
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "graphical.target" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${power-profile-sync}";
