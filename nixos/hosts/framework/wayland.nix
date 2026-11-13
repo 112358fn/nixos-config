@@ -1,8 +1,14 @@
-{ pkgs, noctalia, ... }:
+{ pkgs, inputs, noctalia, ... }:
 {
   imports = [
     noctalia.nixosModules.default
   ];
+
+  # Portals are owned by the system: programs.sway/niri enable them (incl. the
+  # wlr portal and the sway routing from wlroots-portals.conf), and the systemd
+  # user units that actually launch them come from here.
+  nixpkgs.overlays = [ inputs.self.overlays.xdg-desktop-portal-wlr ];
+  xdg.portal.xdgOpenUsePortal = true;
   programs = {
     noctalia.enable = true;
     niri.enable = true;
