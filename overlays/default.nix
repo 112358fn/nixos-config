@@ -7,13 +7,13 @@
     unstable = import inputs.nixpkgs-unstable {
       system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
-      overlays = [ inputs.llm-agents.overlays.shared-nixpkgs ];
     };
   };
 
-  # llm-agents packages built against nixpkgs-unstable, exposed as 'pkgs.llm-agents'
+  # llm-agents' own package set (built against its pinned nixpkgs, so the
+  # store paths match cache.numtide.com), exposed as 'pkgs.llm-agents'
   llm-agents = final: _prev: {
-    inherit (final.unstable) llm-agents;
+    llm-agents = inputs.llm-agents.packages.${final.stdenv.hostPlatform.system};
   };
 
   # xdg-desktop-portal-wlr from l4l's v0.8-screencopy-trigger branch (based on

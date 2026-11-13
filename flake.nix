@@ -12,10 +12,9 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
     };
-    llm-agents = {
-      url = "github:numtide/llm-agents.nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    # No `follows`: packages must be built against llm-agents' own pinned
+    # nixpkgs to match what cache.numtide.com serves.
+    llm-agents.url = "github:numtide/llm-agents.nix";
     direnv-instant.url = "github:Mic92/direnv-instant";
   };
 
@@ -75,10 +74,4 @@
         };
       };
     };
-  nixConfig = {
-    extra-substituters = [ "https://noctalia.cachix.org" ];
-    extra-trusted-public-keys = [
-      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-    ];
-  };
 }

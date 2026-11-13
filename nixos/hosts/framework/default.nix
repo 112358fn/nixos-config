@@ -21,9 +21,13 @@
     # Only root is trusted (the default). Substituters are declared here so
     # untrusted users (home-manager switch, nix develop) still use them; the
     # flake's nixConfig is ignored for untrusted users.
-    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-substituters = [
+      "https://noctalia.cachix.org"
+      "https://cache.numtide.com" # llm-agents
+    ];
     extra-trusted-public-keys = [
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
   };
   nix.channel.enable = false;
@@ -50,6 +54,10 @@
     setSocketVariable = true;
   };
   systemd.user.services.docker.wantedBy = lib.mkForce [ ];
+
+  # gpg-agent (home-manager) is the SSH agent, with the YubiKey key; don't let
+  # gnome-keyring's gcr agent compete for SSH_AUTH_SOCK.
+  services.gnome.gcr-ssh-agent.enable = false;
 
   # YubiKey as an alternative to the password in PAM (sudo, swaylock, ...).
   # "sufficient" means the password always works as fallback, so a missing

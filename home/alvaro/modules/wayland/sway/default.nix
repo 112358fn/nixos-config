@@ -34,10 +34,8 @@ in
         size = 8.0;
       };
 
-      seat."*" = {
-        xcursor_theme = "Adwaita 21";
-        hide_cursor = "when-typing enable";
-      };
+      # xcursor_theme comes from home.pointerCursor (wayland/gtk.nix)
+      seat."*".hide_cursor = "when-typing enable";
 
       window = {
         titlebar = false;
