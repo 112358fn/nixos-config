@@ -7,10 +7,10 @@
     ./network.nix
     ./nginx.nix
     # Only kept for Mattermost (chat.opstackle.*), see mattermost.nix.
-    ./cloudflare.nix
+    #./cloudflare.nix
     ./ssh.nix
     ./taskchampion.nix
-    ./mattermost.nix
+    #./mattermost.nix
     ./tailscale.nix
     ];
   system.stateVersion = "23.05";
