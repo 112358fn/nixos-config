@@ -1,6 +1,8 @@
 { ... }: {
   services.tailscale = {
     enable = true;
-    useRoutingFeatures = "server";
+    # Open the WireGuard UDP port so peers can connect directly instead of
+    # going through DERP relays.
+    openFirewall = true;
   };
 }

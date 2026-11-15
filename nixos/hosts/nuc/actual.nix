@@ -9,9 +9,8 @@
     };
     nginx.virtualHosts."budget.alonsobivou.com" = {
       serverName = "budget.alonsobivou.com";
-      forceSSL = false;
-      addSSL = true;
-      enableACME = true;
+      forceSSL = true;
+      useACMEHost = "alonsobivou.com";
       locations."/" = {
         proxyPass = "http://127.0.0.1:3000$request_uri";
         recommendedProxySettings = true;

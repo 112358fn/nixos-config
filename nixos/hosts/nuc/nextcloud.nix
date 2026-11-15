@@ -14,9 +14,8 @@
     };
     nginx.virtualHosts."cloud.alonsobivou.com" = {
       serverName = "cloud.alonsobivou.com";
-      forceSSL = false; 
-      addSSL = true;
-      enableACME = true;
+      forceSSL = true;
+      useACMEHost = "alonsobivou.com";
     };
   };
 }

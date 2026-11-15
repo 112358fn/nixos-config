@@ -8,9 +8,8 @@
     };
     nginx.virtualHosts."tasks.alonsobivou.com" = {
         serverName = "tasks.alonsobivou.com";
-        forceSSL = false;
-        addSSL = true;
-        enableACME = true;
+        forceSSL = true;
+        useACMEHost = "alonsobivou.com";
         locations."/" = {
           proxyPass = "http://127.0.0.1:10222$request_uri";
           recommendedProxySettings = true;

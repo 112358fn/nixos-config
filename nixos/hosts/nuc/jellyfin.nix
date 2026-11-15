@@ -8,9 +8,8 @@
     };
     nginx.virtualHosts."media.alonsobivou.com" = {
         serverName = "media.alonsobivou.com";
-        forceSSL = false;
-        addSSL = true;
-        enableACME = true;
+        forceSSL = true;
+        useACMEHost = "alonsobivou.com";
         locations."/" = {
           proxyPass = "http://127.0.0.1:8096$request_uri";
           recommendedProxySettings = true;
