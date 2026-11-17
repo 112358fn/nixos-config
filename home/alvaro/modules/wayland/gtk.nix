@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   # Writes gtk-{2,3,4} settings and the org/gnome/desktop/interface dconf keys
   # (GTK on Wayland reads the latter through the settings portal).
@@ -31,10 +31,23 @@
 
   services = {
     udiskie.enable = true;
+    nextcloud-client = {
+      enable = true;
+      startInBackground = true;
+    };
   };
+
+  # nixpkgs' nautilus only loads extensions from this dir; the GNOME NixOS
+  # module sets it, sway doesn't. Needed for nautilus-python (Nextcloud
+  # sync-state emblems and share menu).
+  home.sessionVariables.NAUTILUS_4_EXTENSION_DIR =
+    "${config.home.profileDirectory}/lib/nautilus/extensions-4";
+
   home.packages = with pkgs; [
     gnome-themes-extra
     nautilus
+    nautilus-python
+    nextcloud-client
     file-roller
     geary
     gnome-calendar
