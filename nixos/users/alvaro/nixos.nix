@@ -49,5 +49,4 @@
     # every HID device; FIDO tokens are already tagged by systemd's fido_id.
     udev.packages = [ pkgs.yubikey-personalization ];
   };
-  systemd.services.tailscaled.wantedBy = lib.mkForce [ ];
 }
