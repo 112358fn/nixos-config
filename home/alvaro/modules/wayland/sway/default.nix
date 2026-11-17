@@ -19,7 +19,7 @@ in
       set $mod ${modifier}
     '';
     systemd.variables = [ "--all" ];
-    xwayland = false;
+    xwayland = true;
 
     config = {
       modifier = modifier;
@@ -143,6 +143,8 @@ in
         "${modifier}+0" = "workspace number 10";
         "${modifier}+o" = "workspace back_and_forth";
         "${modifier}+Shift+space" = "floating toggle";
+        "${modifier}+Shift+minus" = "move scratchpad";
+        "${modifier}+minus" = "scratchpad show";
 
         "${modifier}+Shift+0" = "move container to workspace number 10";
         "${modifier}+Shift+1" = "move container to workspace number 1";

@@ -15,7 +15,7 @@
     # (wayland.windowManager.sway.package = null).
     sway = {
       enable = true;
-      xwayland.enable = false;
+      xwayland.enable = true;
       extraPackages = [ ];
       wrapperFeatures = {
         base = false;
