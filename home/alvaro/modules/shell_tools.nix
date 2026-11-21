@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   config,
   ...
@@ -52,10 +53,12 @@ in
         CC = "clang";
       };
     };
-    # We need to enable bash in HM so the
-    # envvars are passed to sway and the rest
-    # of graphical apps
-    bash.enable = true;
+    bash = {
+      enable = true;
+      initExtra = lib.mkBefore ''
+        unset DIRENV_INSTANT_SHELL
+      '';
+    };
     fish = {
       enable = true;
       interactiveShellInit = ''
