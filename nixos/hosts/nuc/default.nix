@@ -12,6 +12,7 @@
     ./taskchampion.nix
     #./mattermost.nix
     ./tailscale.nix
+    ./sync-reader.nix
     ];
   system.stateVersion = "23.05";
 

@@ -12,6 +12,10 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
     };
+    crosspoint-sync = {
+      url = "github:crosspoint-reader/crosspoint-sync";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # No `follows`: packages must be built against llm-agents' own pinned
     # nixpkgs to match what cache.numtide.com serves.
     llm-agents.url = "github:numtide/llm-agents.nix";
@@ -26,6 +30,7 @@
       home-manager,
       llm-agents,
       noctalia,
+      crosspoint-sync,
       ...
     }@inputs:
     {
@@ -56,6 +61,7 @@
         };
         nuc = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs crosspoint-sync; };
           modules = [
             { nixpkgs.overlays = [ (import ./overlays { inherit inputs; }).unstable-packages ]; }
             ./nixos/hosts/nuc
