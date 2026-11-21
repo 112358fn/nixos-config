@@ -30,12 +30,6 @@
     pcscd.enable = true;
     dbus.packages = [ pkgs.gcr ];
 
-    # Evolution data server is used
-    # by calendar and notes
-    gnome.evolution-data-server.enable = true;
-    gnome.gnome-keyring.enable = true;
-    gnome.gnome-online-accounts.enable = true;
-
     # D-BUS service to manipulate storage devs
     udisks2.enable = true;
     # Tailscale

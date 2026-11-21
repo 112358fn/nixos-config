@@ -6,6 +6,8 @@
 
   nixpkgs.overlays = [ inputs.self.overlays.xdg-desktop-portal-wlr ];
   xdg.portal.xdgOpenUsePortal = true;
+  xdg.portal.config.sway."org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+  services.gnome.gnome-keyring.enable = true;
   programs = {
     noctalia.enable = true;
     sway = {

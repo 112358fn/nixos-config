@@ -49,10 +49,6 @@
     nautilus-python
     nextcloud-client
     file-roller
-    geary
-    gnome-calendar
-    gnome-contacts
-    gnome-online-accounts-gtk
     gnome-font-viewer
     papers
     snapshot
