@@ -2,6 +2,7 @@
 {
   imports = [
     ./base.nix
+    ./yubikey.nix
   ];
 
   users.users.alvaro.extraGroups = [
@@ -22,14 +23,8 @@
     lato
     adwaita-fonts
   ];
-  security = {
-    polkit.enable = true;
-    pam.services.swaylock = { };
-  };
+  security.polkit.enable = true;
   services = {
-    pcscd.enable = true;
-    dbus.packages = [ pkgs.gcr ];
-
     # D-BUS service to manipulate storage devs
     udisks2.enable = true;
     # Tailscale
@@ -40,7 +35,6 @@
     upower.enable = true;
     # every HID device; FIDO tokens are already tagged by systemd's fido_id.
     udev.packages = [
-      pkgs.yubikey-personalization
       # uaccess for the NuPhy Node 75 LP config interface (if03, 64-byte raw
       # vendor reports) so nuphio works. if00/if01 carry keystrokes and if02
       # mouse/media keys; they stay root-only. Must sort before
