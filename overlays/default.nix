@@ -22,12 +22,12 @@
   # damaged regions and crash with "session already has a frame object".
   xdg-desktop-portal-wlr = final: prev: {
     xdg-desktop-portal-wlr = prev.xdg-desktop-portal-wlr.overrideAttrs (_old: {
-      version = "0.8.4-screencopy-trigger";
+      version = "0.9.0";
       src = final.fetchFromGitHub {
-        owner = "l4l";
+        owner = "emersion";
         repo = "xdg-desktop-portal-wlr";
-        rev = "960e9305471521a6bcc46ab8b60c01920487e061";
-        hash = "sha256-8qh1nrirlHXObkKLxRaDOxDgT8DoBVpjjy/mW2tZRw0=";
+        rev = "8388b8a6214470462146840e92909aff5983eeac";
+        hash = "sha256-ZfqItKmh/z1LK8XdfdQxxV4FsKdyGGFZb33iuCLogPE=";
       };
     });
   };
