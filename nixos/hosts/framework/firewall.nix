@@ -40,6 +40,7 @@ in
         (udp 21027)
         # Calibre wireless device connection (KOReader)
         (tcp 9099)
+        (tcp 8080)
       ];
     };
   };
