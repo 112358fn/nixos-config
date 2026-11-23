@@ -6,13 +6,14 @@
     ./actual.nix
     ./network.nix
     ./nginx.nix
-    # Only kept for Mattermost (chat.opstackle.*), see mattermost.nix.
-    #./cloudflare.nix
+    # Tunnel for the publicly routed services (vikunja.nix, mattermost.nix).
+    ./cloudflare.nix
     ./ssh.nix
     ./taskchampion.nix
     #./mattermost.nix
     ./tailscale.nix
     ./sync-reader.nix
+    ./vikunja.nix
     ];
   system.stateVersion = "23.05";
 
