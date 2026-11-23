@@ -11,6 +11,21 @@ in {
       # Public through the Cloudflare tunnel, so no open sign-up.
       # Create users with: vikunja user create -u <name> -e <email>
       settings.service.enableregistration = false;
+      # Outgoing mail (password recovery, notifications) through SMTP2GO.
+      settings.mailer = {
+        enabled = true;
+        host = "mail-eu.smtp2go.com";
+        # Implicit TLS; forcessl refuses to fall back to plaintext.
+        port = 465;
+        forcessl = true;
+        # Must be a verified sender in SMTP2GO.
+        fromemail = "noreply@todo.alonsobivou.com";
+      };
+      # Must contain the SMTP2GO SMTP user credentials:
+      # VIKUNJA_MAILER_USERNAME=<smtp user>
+      # VIKUNJA_MAILER_PASSWORD=<smtp password>
+      # File should be root:root 0400.
+      environmentFiles = [ "/var/lib/secrets/vikunja.env" ];
     };
     nginx.virtualHosts.${hostname} = {
       serverName = hostname;
