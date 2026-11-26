@@ -26,6 +26,7 @@
         "sidebar.animation.enabled" = false;
         "sidebar.visibility" = "hide-sidebar";
         "browser.tabs.closeWindowWithLastTab" = false;
+        "apz.gtk.kinetic_scroll.enabled" = false;
       };
       userChrome = ''
         #fullscr-toggler { display:none !important; }
