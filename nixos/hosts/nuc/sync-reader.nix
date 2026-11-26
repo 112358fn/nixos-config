@@ -1,17 +1,17 @@
 {inputs, ...}:
 {
-  imports = [inputs.crosspoint-sync.nixosModules.crosspoint-sync];
-  services.crosspoint-sync = {
+  imports = [inputs.kosync.nixosModules.x86_64-linux.default];
+  services.kosync = {
     enable = true;
-    port = 8080;
-    registration = true;
+    port = 7200;
+    host = "127.0.0.1";
   };
   services.nginx.virtualHosts."reading.alonsobivou.com" = {
     serverName = "reading.alonsobivou.com";
     forceSSL = true;
     useACMEHost = "alonsobivou.com";
     locations."/" = {
-      proxyPass = "http://[::1]:8080$request_uri";
+      proxyPass = "http://127.0.0.1:7200$request_uri";
       recommendedProxySettings = true;
     };
   };

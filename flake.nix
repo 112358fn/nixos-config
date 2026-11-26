@@ -12,8 +12,8 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
     };
-    crosspoint-sync = {
-      url = "github:crosspoint-reader/crosspoint-sync";
+    kosync = {
+      url = "git+https://codeberg.org/cmooon/kosync";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # No `follows`: packages must be built against llm-agents' own pinned
@@ -30,7 +30,7 @@
       home-manager,
       llm-agents,
       noctalia,
-      crosspoint-sync,
+      kosync,
       ...
     }@inputs:
     {
@@ -61,7 +61,7 @@
         };
         nuc = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs crosspoint-sync; };
+          specialArgs = { inherit inputs kosync; };
           modules = [
             { nixpkgs.overlays = [ (import ./overlays { inherit inputs; }).unstable-packages ]; }
             ./nixos/hosts/nuc
